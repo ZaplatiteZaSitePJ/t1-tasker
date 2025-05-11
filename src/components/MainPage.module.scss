@@ -1,8 +1,18 @@
-.main {
-    position: relative;
-    padding: 2rem 2.75rem;
-    height: 100vh;
-    
+@keyframes bgAnimations {
+    0% {
+        opacity: 100%;
+    };
+    100% {
+        opacity: 0%;
+    }
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: bgAnimations 15s infinite alternate ease-in-out;
+
     /* GRADIENT */
     background: #ffffff;
     background: -webkit-linear-gradient(147deg,rgba(255, 255, 255, 1) 0%, rgb(210, 237, 255) 100%);
@@ -13,6 +23,12 @@
     endColorstr="#EBF7FF",
     GradientType=0
     );
+}
+
+.main {
+    position: relative;
+    padding: 2rem 2.75rem;
+    height: 100vh;
 
     &__logo {
         font-size: var(--little-font-size);

@@ -27,7 +27,13 @@ const TextfieldForm: FC = () => {
         <form className={styles.form} onSubmit={handleSubmit(handleAdd)}>
             <label>
                 Label:
-                <input {...register("label")} type="text" placeholder="First Name" className={styles.form__labelInput}/>
+                <input 
+                    {...register("label")} 
+                    type="text" 
+                    placeholder="First Name" 
+                    className={styles.form__labelInput}
+                    maxLength={15}
+                    />
             </label>
 
             <label>
@@ -39,7 +45,7 @@ const TextfieldForm: FC = () => {
                     >
                         <span>
                             <span className={value === "numbers" ? styles.unactive : ""}>text</span>
-                            {" / "}
+                            <span style={{opacity: 0.5}}>{" / "}</span>
                             <span className={value === "text" ? styles.unactive : ""}>number</span>
                         </span>
                     </button>

@@ -1,0 +1,5 @@
+:root {
+    font-size: var(--normal-font-size);
+    font-family: 'Arial';
+    color: var(--black-color);
+}

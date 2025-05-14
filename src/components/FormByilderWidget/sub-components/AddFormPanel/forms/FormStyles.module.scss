@@ -1,9 +1,12 @@
 .form {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    width: fit-content;
+    gap: 2rem;
+    width: 100%;
+    height: min-content;
     flex-wrap: wrap;
+    align-items: start;
+    flex-shrink: 0;
 
     label {
         display: flex;
@@ -54,7 +57,7 @@
     
     button, span {
         font-weight: bold;
-        transition: 0.2s ease-in-out;
+        transition: 0.15s ease-out;
     }
 
 
@@ -63,6 +66,10 @@
         color: white;
         padding: 0.5rem 4rem;
         border-radius: 0.25rem;
+
+        &:hover{
+            transform: translate(0, -0.2rem); ;
+        }
         
     }
 
@@ -72,10 +79,6 @@
         align-items: center;
         width: 100%;
         gap: 0.5rem;
-
-        button {
-            margin: 1rem auto 0;
-        }
     }
 }
 

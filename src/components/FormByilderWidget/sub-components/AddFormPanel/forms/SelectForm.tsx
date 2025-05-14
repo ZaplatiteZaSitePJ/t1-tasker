@@ -1,9 +1,10 @@
-import { useRef, useState, useEffect, type FC } from "react";
+import { useRef, useState, useEffect, forwardRef} from "react";
 import type { SelectInterface } from "../../../types/selectInterface"
 import styles from "./FormStyles.module.scss"
 import { useForm } from "react-hook-form";
 
-const SelectForm: FC = () => {
+
+const SelectForm = forwardRef<HTMLFormElement>((props, ref) => {
     const {register, handleSubmit, setValue, getValues, watch} = useForm<SelectInterface>({
         defaultValues: {
             choosable: "one",
@@ -57,7 +58,7 @@ const SelectForm: FC = () => {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit(handleAdd)}>
+        <form ref={ref} className={styles.form} onSubmit={handleSubmit(handleAdd)}>
             <label>
                 Label:
                 <input 
@@ -109,5 +110,6 @@ const SelectForm: FC = () => {
             </div>
         </form>
     )
-} 
+})
+
 export default SelectForm

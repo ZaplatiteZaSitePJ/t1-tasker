@@ -1,4 +1,4 @@
-import React, { type FC } from "react";
+import { type FC } from "react";
 import styles from './MainPage.module.scss'
 import AddFormPanel from "./FormByilderWidget/sub-components/AddFormPanel/AddFormPanel";
 

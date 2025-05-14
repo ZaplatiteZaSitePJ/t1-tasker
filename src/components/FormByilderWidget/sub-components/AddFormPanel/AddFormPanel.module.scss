@@ -7,7 +7,7 @@
     &__formElements {
         align-items: center;
 
-        transition: 0.2s ease-in-out;
+        transition: 0.15s ease;
 
         &::first-letter {
             text-transform: capitalize;
@@ -15,9 +15,10 @@
 
     }
 
-    &__elementsFormsPlace {
+    &__elementsForm {
         display: flex;
-        justify-content: center;
+        justify-content: left;
+        overflow: auto;
     }
 }
 
@@ -31,4 +32,13 @@ input[type="number"]:hover,
 input[type="number"]:focus {
     appearance: none;
     -moz-appearance: textfield;
+}
+
+
+.element::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }

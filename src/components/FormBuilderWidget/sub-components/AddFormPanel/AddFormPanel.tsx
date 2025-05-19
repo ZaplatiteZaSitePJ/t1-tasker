@@ -40,15 +40,29 @@ const AddFormPanel: FC = () => {
     }
 
     return (
-        <>
+        <div className={styles.addFormPanel__container}>
             <nav className={styles.addFormPanel}>
-                <AddFormButton title="textfield" id={"textfield"} activeId={activeId} onClick={handleChangeForm}/>
-                <AddFormButton title="select" id={"select"} activeId={activeId} onClick={handleChangeForm}/>
-                <AddFormButton title="checkbox" id={"checkbox"} activeId={activeId} onClick={handleChangeForm}/>
+                <AddFormButton 
+                    title="textfield" 
+                    id={"textfield"} 
+                    activeId={activeId} 
+                    onClick={handleChangeForm}
+                />
+                <AddFormButton 
+                    title="select" 
+                    id={"select"} 
+                    activeId={activeId} 
+                    onClick={handleChangeForm}
+                />
+                <AddFormButton 
+                    title="checkbox" 
+                    id={"checkbox"} 
+                    activeId={activeId} 
+                    onClick={handleChangeForm}
+                />
             </nav>
-                
             <SwitchForms activeId = {activeId} />    
-        </>    
+        </div>    
     )
 }
 

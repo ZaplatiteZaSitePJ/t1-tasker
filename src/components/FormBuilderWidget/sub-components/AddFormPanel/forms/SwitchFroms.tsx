@@ -15,7 +15,6 @@ const SwitchForms: FC<SwitchFormsProps> = ({activeId}) => {
     const currentElemenRef = useRef<HTMLFormElement | null>(null)
 
     useEffect(():void => {
-        const contentainer = elementsFormRef?.current
         const target = currentElemenRef?.current
 
         target?.scrollIntoView({

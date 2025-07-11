@@ -1,0 +1,30 @@
+.logo {
+	color: var(--black-color);
+	font-size: var(--small-font-size);
+	font-weight: bold;
+	margin-bottom: 3.85rem;
+}
+
+.nav {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+
+	&__link {
+		font-weight: bold;
+		font-size: var(--large-font-size);
+	}
+}
+
+.infoContainer {
+	button {
+		color: var(--grey-color);
+		border: none;
+		transition: ease-in 0.2s;
+		padding: 0;
+
+		&:hover {
+			color: var(--black-color);
+		}
+	}
+}

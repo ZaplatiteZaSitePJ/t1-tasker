@@ -1,28 +1,12 @@
 import { type FC } from "react";
-import styles from './MainPage.module.scss'
-import AddFormPanel from "./FormBuilderWidget/sub-components/AddFormPanel/AddFormPanel";
-import FormPanel from "./FormBuilderWidget/sub-components/FormPanel/FormPanel";
-import { FormProvider } from './FormBuilderWidget/FormBuilderContext/FormContentContext';
+import styles from "./MainPage.module.scss";
 
 const MainPage: FC = () => {
+	return (
+		<>
+			<div className={styles.mainPage}></div>
+		</>
+	);
+};
 
-    return (
-        <>
-            <div className={styles.background}>
-
-            </div>
-            <main className={styles.main}>
-                <p className={styles.main__logo}>_design your own form_</p>
-                <section className={styles.main__formBuilderPlace}>
-                    <FormProvider>
-                        <AddFormPanel />
-                        <FormPanel />
-                    </FormProvider>
-                </section>
-                
-            </main>
-        </>
-    )
-}
-
-export default MainPage
+export default MainPage;

@@ -1,10 +1,7 @@
-import MainPage from "./components/MainPage"
+import LayoutProvider from "./LayoutProvider";
 
 function App() {
-
-  return (
-    <MainPage />
-  )
+	return <LayoutProvider />;
 }
 
-export default App
+export default App;

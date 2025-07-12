@@ -1,0 +1,12 @@
+.taskList {
+    display: grid;
+    grid-template-columns: 64rem auto;
+
+    &__contentPanel{
+
+    }
+
+    &__addPanel{
+        border-left: 2px solid var(--light-grey-color);
+    }
+}

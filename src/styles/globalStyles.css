@@ -15,10 +15,4 @@ a:hover {
 	color: var(--black-color);
 }
 
-button {
-	font-size: var(--normal-font-size);
-	font-weight: bold;
-	padding: 0.2rem 0.8rem;
-	border: 0.2rem solid var(--black-color);
-	border-radius: 10px;
-}
+

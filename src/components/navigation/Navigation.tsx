@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import styles from "./Navigation.module.scss";
-import ButtonBordered from "../ui/buttons/ButtonBordered";
-import ButtonFilled from "../ui/buttons/ButtonFilled";
 import ButtonText from "../ui/buttons/ButtonText";
 
 export default function Navigation() {

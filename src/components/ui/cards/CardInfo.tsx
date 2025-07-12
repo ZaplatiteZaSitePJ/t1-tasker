@@ -1,15 +1,22 @@
-import React from "react";
+import { type FC } from "react";
 import { Card, CardContent } from "@mui/material";
+import type { CardInfoProps } from "./Card.interface";
 
-export default function CardInfo() {
+const CardInfo:FC<CardInfoProps> = ({title, content, optional}) => {
 	return (
 		<Card sx={{ width: "fit-content", gap: "0.5rem" }}>
 			<CardContent>
-				<h5>Заголовок</h5>
+				<h5>{title}</h5>
 				<h6>
-					Это описание карточки. Здесь можно разместить краткий текст.
+					{content}
 				</h6>
+				<div style={{width: '100%', display: 'flex', flexDirection: 'column', gap: '0.25rem'}}>
+					{...optional}
+				</div>
 			</CardContent>
+
 		</Card>
 	);
 }
+
+export default CardInfo

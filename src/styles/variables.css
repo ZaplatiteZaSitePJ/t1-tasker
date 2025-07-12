@@ -10,9 +10,7 @@
 	--grey-color: #8d8e8f;
 	--light-grey-color: #d9d9d9;
 	/* PRIORITES */
-	--urgent-priorites-color: #c44444;
-	--important-priorites-color: #c444a4;
-	--significant-priorites-color: #7e44c4;
-	--important-priorites-color: #4468c4;
-	--important-priorites-color: #44c4b9;
+	--high-priorites-color: #c44444;
+	--medium-priorites-color: #7e44c4;
+	--low-priorites-color: #4468c4;
 }

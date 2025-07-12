@@ -1,0 +1,1 @@
+export type Priorites = "Low" | "Medium" | "High";

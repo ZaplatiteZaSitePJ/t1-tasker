@@ -1,0 +1,20 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: fit-content;
+
+	&__topInfo {
+		font-size: var(--little-font-size);
+		font-weight: bold;
+	}
+
+	&__contentPanel {
+		padding: 0.5rem 2rem;
+	}
+
+	&__downInfo {
+		font-size: var(--little-font-size);
+		font-weight: normal;
+	}
+}

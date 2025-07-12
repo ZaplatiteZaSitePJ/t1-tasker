@@ -8,11 +8,9 @@ a,
 a:link,
 a:visited {
 	color: var(--grey-color);
-	transition: ease-in 0.2s;
+	transition: ease 0.2s;
 }
 
 a:hover {
 	color: var(--black-color);
 }
-
-

@@ -2,7 +2,7 @@ import { type FC } from "react";
 import { Card, CardContent } from "@mui/material";
 import type { CardInfoProps } from "./Card.interface";
 
-const CardInfo:FC<CardInfoProps> = ({title, content, optional}) => {
+const CardInfo:FC<CardInfoProps> = ({title, content, optional, visability="default"}) => {
 	return (
 		<Card sx={{ width: "fit-content", gap: "0.5rem" }}>
 			<CardContent>

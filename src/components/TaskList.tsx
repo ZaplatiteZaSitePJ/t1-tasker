@@ -1,7 +1,7 @@
 import { type FC } from "react";
-import styles from "./MainPage.module.scss";
+import styles from "./TaskList.module.scss";
 
-const MainPage: FC = () => {
+const TaskList: FC = () => {
 	return (
 		<>
 			<div className={styles.mainPage}></div>
@@ -9,4 +9,4 @@ const MainPage: FC = () => {
 	);
 };
 
-export default MainPage;
+export default TaskList;

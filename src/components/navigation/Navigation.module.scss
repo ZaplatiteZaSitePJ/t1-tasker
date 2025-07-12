@@ -17,14 +17,6 @@
 }
 
 .infoContainer {
-	button {
-		color: var(--grey-color);
-		border: none;
-		transition: ease-in 0.2s;
-		padding: 0;
-
-		&:hover {
-			color: var(--black-color);
-		}
-	}
+	display: flex;
+	flex-direction: column;
 }

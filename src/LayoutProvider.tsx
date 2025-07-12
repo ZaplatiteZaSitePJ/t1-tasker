@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import MainPage from "./components/MainPage";
+import TaskList from "./components/TaskList";
 import Layout from "./Layout";
 
 export default function LayoutProvider() {
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>
-				<Route index element={<MainPage />} />
+				<Route index element={<TaskList />} />
 			</Route>
 		</Routes>
 	);

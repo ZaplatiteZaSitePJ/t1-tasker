@@ -1,20 +1,19 @@
 .card {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 0.3rem;
 	width: fit-content;
+	text-align: justify;
 
+	//перенести в Task.module.scss
 	&__topInfo {
-		font-size: var(--little-font-size);
-		font-weight: bold;
+	}
+
+	&__bottomInfo {
 	}
 
 	&__contentPanel {
-		padding: 0.5rem 2rem;
-	}
-
-	&__downInfo {
-		font-size: var(--little-font-size);
-		font-weight: normal;
+		border-radius: 0.5rem;
+		border: 0.2rem solid #000;
 	}
 }

@@ -1,0 +1,14 @@
+.topPanel {
+	width: 100%;
+	text-align: center;
+	font-size: var(--small-font-size);
+	font-weight: bold;
+}
+
+.bottomPanel {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	text-align: center;
+	font-size: var(--small-font-size);
+}

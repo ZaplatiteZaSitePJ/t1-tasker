@@ -1,6 +1,7 @@
 import { type FC } from "react";
 import styles from "./TaskList.module.scss";
 import TaskContainer from "./compomemts/tasks/TaskContainer";
+import AddTaskForm from "./compomemts/addTask/AddTaskForm";
 
 const TaskList: FC = () => {
 	return (
@@ -9,7 +10,7 @@ const TaskList: FC = () => {
 				<section className={styles.taskList__contentPanel}>
 					<TaskContainer />
 				</section>
-				<section className={styles.taskList__addPanel}>ало</section>
+				<section className={styles.taskList__addPanel}><AddTaskForm/></section>
 			</div>
 		</>
 	);

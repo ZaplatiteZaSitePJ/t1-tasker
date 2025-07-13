@@ -28,11 +28,11 @@
 	&:hover {
 		.hovered {
 			position: relative;
-			height: fit-content;
+			height: 6rem;
 			transform: scaleY(1);
 			padding: 0 0 0.75rem;
 			transform-origin: top;
-			transition: all 0.25s;
+			transition: all 0.2s ease 0.4s;
 		}
 	}
 }

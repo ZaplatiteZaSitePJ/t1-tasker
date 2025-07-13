@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./AddTaskForm.module.scss";
+import cn from "classnames";
 import { useForm } from "react-hook-form";
 import type { TaskProps } from "../tasks/Task.interface";
 import {
@@ -11,13 +12,16 @@ import {
 	ButtonGroup,
 	Button,
 } from "@mui/material";
+import ButtonBordered from "../../../ui/buttons/ButtonBordered";
+import ButtonFilled from "../../../ui/buttons/ButtonFilled";
 
 export default function AddTaskForm() {
 	const {
 		register,
+		getValues,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<TaskProps>();
+	} = useForm<TaskProps>({ defaultValues: { priorites: "High" } });
 
 	return (
 		<div className={styles.container}>
@@ -35,12 +39,14 @@ export default function AddTaskForm() {
 						},
 					})}
 				/>
+
 				<TextField
 					label="description"
 					variant="standard"
 					fullWidth
 					{...register("description")}
 				/>
+
 				<FormControl sx={{ width: "10rem", margin: "0 auto" }}>
 					<InputLabel id="category-label-id">category</InputLabel>
 					<Select
@@ -59,6 +65,7 @@ export default function AddTaskForm() {
 						<MenuItem value={"Test"}>Test</MenuItem>
 					</Select>
 				</FormControl>
+
 				<FormControl sx={{ width: "10rem", margin: "0 auto" }}>
 					<InputLabel id="status-label-id">status</InputLabel>
 					<Select
@@ -73,6 +80,7 @@ export default function AddTaskForm() {
 						<MenuItem value={"Done"}>Done</MenuItem>
 					</Select>
 				</FormControl>
+
 				<div className={styles.addForm__dateContainer}>
 					<TextField
 						label="start time"
@@ -86,6 +94,7 @@ export default function AddTaskForm() {
 						sx={{ width: "4.5rem" }}
 					/>
 				</div>
+
 				<div className={styles.addForm__prioritiesContainer}>
 					<h3>priorities</h3>
 					<ul className={styles.addForm__prioritiesChoice}>
@@ -95,7 +104,10 @@ export default function AddTaskForm() {
 								style={{
 									backgroundColor: `var(--high-priorites-color)`,
 								}}
-								className={styles.addForm__prioritesButton}
+								className={cn(styles.addForm__prioritesButton, {
+									[styles.activeButton]:
+										getValues("priorites") === "High",
+								})}
 							></button>
 						</li>
 						<li>
@@ -104,7 +116,10 @@ export default function AddTaskForm() {
 								style={{
 									backgroundColor: `var(--medium-priorites-color)`,
 								}}
-								className={styles.addForm__prioritesButton}
+								className={cn(styles.addForm__prioritesButton, {
+									[styles.activeButton]:
+										getValues("priorites") === "Medium",
+								})}
 							></button>
 						</li>
 						<li>
@@ -113,21 +128,42 @@ export default function AddTaskForm() {
 								style={{
 									backgroundColor: `var(--low-priorites-color)`,
 								}}
-								className={styles.addForm__prioritesButton}
+								className={cn(styles.addForm__prioritesButton, {
+									[styles.activeButton]:
+										getValues("priorites") === "Low",
+								})}
 							></button>
 						</li>
 					</ul>
 				</div>
+
 				<div className={styles.addForm__progressContainer}>
 					<h3>progress</h3>
-					<ButtonGroup variant="text" aria-label="Basic button group">
-						<Button>0%</Button>
-						<Button>25%</Button>
-						<Button>50%</Button>
-						<Button>75%</Button>
-						<Button>100%</Button>
+					<ButtonGroup
+						variant="text"
+						aria-label="Basic button group"
+						sx={{
+							"& .MuiButtonGroup-grouped:not(:last-of-type)": {
+								borderRight: "1px solid var(--grey-color)",
+							},
+						}}
+					>
+						<Button sx={{ color: `var(--black-color)` }}>0%</Button>
+						<Button sx={{ color: `var(--black-color)` }}>
+							25%
+						</Button>
+						<Button sx={{ color: `var(--black-color)` }}>
+							50%
+						</Button>
+						<Button sx={{ color: `var(--black-color)` }}>
+							75%
+						</Button>
+						<Button sx={{ color: `var(--black-color)` }}>
+							100%
+						</Button>
 					</ButtonGroup>
 				</div>
+
 				<TextField
 					label="content"
 					variant="standard"
@@ -135,6 +171,11 @@ export default function AddTaskForm() {
 					fullWidth
 					{...register("content")}
 				/>
+
+				<div className={styles.addForm__buttonsContainer}>
+					<ButtonBordered>reset</ButtonBordered>
+					<ButtonFilled>add</ButtonFilled>
+				</div>
 			</form>
 		</div>
 	);

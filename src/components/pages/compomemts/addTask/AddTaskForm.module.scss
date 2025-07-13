@@ -2,10 +2,18 @@ h3 {
 	font-size: var(--normal-font-size);
 }
 
+.activeButton {
+	width: 1.5rem !important;
+	height: 1.5rem !important;
+}
+
 .container {
+	margin: auto 0;
 	text-align: center;
 	font-size: var(--large-font-size);
 	font-weight: bold;
+	max-height: 100%;
+	overflow: auto;
 }
 
 .addForm {
@@ -30,11 +38,14 @@ h3 {
 		display: flex;
 		justify-content: center;
 		gap: 1rem;
+		align-items: center;
 	}
 
 	&__prioritiesChoice {
 		display: flex;
 		gap: 0.5rem;
+		align-items: center;
+		height: fit-content;
 	}
 
 	&__prioritesButton {
@@ -54,5 +65,10 @@ h3 {
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
+	}
+
+	&__buttonsContainer {
+		display: flex;
+		justify-content: space-between;
 	}
 }

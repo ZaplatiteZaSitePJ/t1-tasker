@@ -1,1 +1,1 @@
-export type Status = "To_do" | "In_Progress" | "Done";
+export type Status = "To-do" | "In Progress" | "Done";

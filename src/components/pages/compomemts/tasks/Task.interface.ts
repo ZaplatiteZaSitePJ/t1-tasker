@@ -4,7 +4,8 @@ import type { Status } from "../../../../types/Status.type";
 
 export interface TaskProps {
 	title: string;
-	description: string;
+	description?: string;
+	content?: string;
 	category: Category;
 	status: Status;
 	priorites: Priorites;

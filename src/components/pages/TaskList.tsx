@@ -16,6 +16,24 @@ const TaskList: FC = () => {
 						date="None"
 						progress={0}
 					/>
+						<Task
+						title="прикол"
+						description="иди нахуй"
+						priorites="Low"
+						status="To_do"
+						category="Bug"
+						date="None"
+						progress={0}
+					/>
+						<Task
+						title="прикол"
+						description="иди нахуй"
+						priorites="Medium"
+						status="To_do"
+						category="Bug"
+						date="12:30 - 13:50"
+						progress={20}
+					/>
 				</section>
 				<section className={styles.taskList__addPanel}>ало</section>
 			</div>

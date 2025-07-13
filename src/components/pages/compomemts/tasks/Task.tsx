@@ -1,27 +1,29 @@
-import React, { type FC } from "react";
+import { type FC } from "react";
 import styles from "./Task.module.scss";
 import Card from "../../../ui/cards/Card";
 import type { TaskProps } from "./Task.interface";
+import getColroFromPriorities from "../../../../funcs/getColorFromPriorities";
 
 const Task: FC<TaskProps> = ({
 	title = "Без названия",
 	description = "",
 	category = "Bug",
 	status = "To_do",
-	//	priorites = "High",
+	priorites = "High",
 	date = "None",
 	progress = 0,
 }) => {
 	return (
 		<Card
-			topPanel={<TaskTopPanel date={date} />}
+			cardBorderColor={getColroFromPriorities(priorites)}
+			topPanel={<TaskTopPanel date={date} priorites={priorites} />}
 			bottomPanel={
 				<TaskBottomPanel category={category} status={status} />
 			}
 			contentPanel={{
 				title: title,
 				content: description,
-				optional: <TaskOptionalPanel progress={progress} />,
+				optional: <TaskProgressBar progress={progress} />,
 			}}
 		/>
 	);
@@ -29,12 +31,12 @@ const Task: FC<TaskProps> = ({
 
 export default Task;
 
-const TaskTopPanel: FC<Pick<TaskProps, "date">> = ({ date }) => {
-	if (date !== "None") return;
+const TaskTopPanel: FC<Pick<TaskProps, "date" | "priorites">> = ({ date, priorites }) => {
+	if (date === "None") return <></>;
 
 	return (
 		<div className={styles.topPanel}>
-			<p>{date}</p>
+			<p style={{color: getColroFromPriorities(priorites)}}>{date}</p>
 		</div>
 	);
 };
@@ -51,7 +53,7 @@ const TaskBottomPanel: FC<Pick<TaskProps, "category" | "status">> = ({
 	);
 };
 
-const TaskOptionalPanel: FC<Pick<TaskProps, "progress">> = ({ progress }) => {
+const TaskProgressBar: FC<Pick<TaskProps, "progress">> = ({ progress }) => {
 	return (
 		<div>
 			<div style={{ width: `${progress}%` }}></div>

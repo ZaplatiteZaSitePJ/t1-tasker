@@ -6,6 +6,7 @@ export interface CardInfoProps {
 }
 
 export interface CardProps {
+	cardBorderColor?: string,
 	topPanel: React.ReactNode;
 	bottomPanel: React.ReactNode;
 	contentPanel: CardInfoProps;

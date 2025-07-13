@@ -13,7 +13,7 @@ const CardInfo: FC<CardInfoProps> = ({
 	return (
 		<Card
 			sx={{
-				maxWidth: "25rem",
+				maxWidth: "20rem",
 				minWidth: "5rem",
 				background: "transparent",
 				padding: "0rem 0rem",

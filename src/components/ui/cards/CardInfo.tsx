@@ -25,7 +25,7 @@ const CardInfo: FC<CardInfoProps> = ({
 					flexDirection: "column",
 					width: "fit-content",
 					gap: "0.5rem",
-					padding: "0.5rem 2rem 0.5rem 2rem",
+					padding: "0.5rem 2rem 0rem 2rem !important",
 				}}
 				className={styles.cardContent}
 			>

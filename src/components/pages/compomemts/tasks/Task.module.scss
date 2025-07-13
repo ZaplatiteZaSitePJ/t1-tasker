@@ -12,3 +12,14 @@
 	text-align: center;
 	font-size: var(--small-font-size);
 }
+
+.progressBar {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+
+	&__text {
+		text-align: center;
+		font-size: var(--small-font-size);
+	}
+}

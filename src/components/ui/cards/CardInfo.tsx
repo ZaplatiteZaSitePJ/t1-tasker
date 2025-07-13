@@ -16,7 +16,7 @@ const CardInfo: FC<CardInfoProps> = ({
 				maxWidth: "25rem",
 				minWidth: "5rem",
 				background: "transparent",
-				padding:"0rem 0rem",
+				padding: "0rem 0rem",
 			}}
 		>
 			<CardContent
@@ -27,16 +27,18 @@ const CardInfo: FC<CardInfoProps> = ({
 					gap: "0.5rem",
 					padding: "0.5rem 2rem 0.5rem 2rem",
 				}}
+				className={styles.cardContent}
 			>
 				<h3 className={styles.title}>{title}</h3>
-				<div className={cn(styles.additionalContainer, {
-						[styles.hovered] : visability === "hovered"
+				<div
+					className={cn(styles.additionalContainer, {
+						[styles.hovered]: visability === "hovered",
 					})}
 				>
 					<Divider orientation="horizontal" flexItem />
 
 					<p className={styles.description}>{content}</p>
-						{optional}
+					{optional}
 				</div>
 			</CardContent>
 		</Card>

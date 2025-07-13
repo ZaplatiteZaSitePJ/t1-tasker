@@ -23,8 +23,13 @@ const Task: FC<TaskProps> = ({
 			contentPanel={{
 				title: title,
 				content: description,
-				optional: <TaskProgressBar progress={progress} />,
-				visability: "hovered"
+				optional: (
+					<TaskProgressBar
+						progress={progress}
+						priorites={priorites}
+					/>
+				),
+				visability: "hovered",
 			}}
 		/>
 	);
@@ -32,12 +37,15 @@ const Task: FC<TaskProps> = ({
 
 export default Task;
 
-const TaskTopPanel: FC<Pick<TaskProps, "date" | "priorites">> = ({ date, priorites }) => {
+const TaskTopPanel: FC<Pick<TaskProps, "date" | "priorites">> = ({
+	date,
+	priorites,
+}) => {
 	if (date === "None") return <></>;
 
 	return (
 		<div className={styles.topPanel}>
-			<p style={{color: getColroFromPriorities(priorites)}}>{date}</p>
+			<p style={{ color: getColroFromPriorities(priorites) }}>{date}</p>
 		</div>
 	);
 };
@@ -54,11 +62,20 @@ const TaskBottomPanel: FC<Pick<TaskProps, "category" | "status">> = ({
 	);
 };
 
-const TaskProgressBar: FC<Pick<TaskProps, "progress">> = ({ progress }) => {
+const TaskProgressBar: FC<Pick<TaskProps, "progress" | "priorites">> = ({
+	progress,
+	priorites,
+}) => {
 	return (
-		<div>
-			<div style={{ width: `${progress}%` }}></div>
-			<p>{progress} %</p>
+		<div className={styles.progressBar}>
+			<div
+				style={{
+					width: `${progress}%`,
+					backgroundColor: getColroFromPriorities(priorites),
+					height: "0.3rem",
+				}}
+			></div>
+			<p className={styles.progressBar__text}>{progress} %</p>
 		</div>
 	);
 };

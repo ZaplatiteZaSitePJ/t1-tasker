@@ -24,6 +24,7 @@ const Task: FC<TaskProps> = ({
 				title: title,
 				content: description,
 				optional: <TaskProgressBar progress={progress} />,
+				visability: "hovered"
 			}}
 		/>
 	);

@@ -8,3 +8,20 @@
 	font-size: var(--small-font-size);
 	font-weight: normal;
 }
+
+.additionalContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.hovered {
+	position: relative;
+	height: 0;
+	transition: all 0.2s;
+
+	&:hover {
+		height: fit-content;
+	}
+}

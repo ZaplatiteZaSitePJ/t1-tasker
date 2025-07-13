@@ -2,6 +2,7 @@ import { type FC } from "react";
 import { Card, CardContent, Divider } from "@mui/material";
 import type { CardInfoProps } from "./Card.interface";
 import styles from "./CardInfo.module.scss";
+import cn from "classnames";
 
 const CardInfo: FC<CardInfoProps> = ({
 	title,
@@ -15,6 +16,7 @@ const CardInfo: FC<CardInfoProps> = ({
 				maxWidth: "25rem",
 				minWidth: "5rem",
 				background: "transparent",
+				padding:"0rem 0rem",
 			}}
 		>
 			<CardContent
@@ -23,21 +25,18 @@ const CardInfo: FC<CardInfoProps> = ({
 					flexDirection: "column",
 					width: "fit-content",
 					gap: "0.5rem",
-					padding: "0.5rem 2rem",
+					padding: "0.5rem 2rem 0.5rem 2rem",
 				}}
 			>
 				<h3 className={styles.title}>{title}</h3>
-				<Divider orientation="horizontal" flexItem />
-				<p className={styles.description}>{content}</p>
-				<div
-					style={{
-						width: "100%",
-						display: "flex",
-						flexDirection: "column",
-						gap: "0.25rem",
-					}}
+				<div className={cn(styles.additionalContainer, {
+						[styles.hovered] : visability === "hovered"
+					})}
 				>
-					{optional}
+					<Divider orientation="horizontal" flexItem />
+
+					<p className={styles.description}>{content}</p>
+						{optional}
 				</div>
 			</CardContent>
 		</Card>

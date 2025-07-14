@@ -36,8 +36,9 @@ const CardInfo: FC<CardInfoProps> = ({
 					})}
 				>
 					<Divider orientation="horizontal" flexItem />
-
-					<p className={styles.description}>{content}</p>
+					<div className={styles.descriptionContainer}>
+						<p className={styles.description}>{content}</p>
+					</div>
 					{optional}
 				</div>
 			</CardContent>

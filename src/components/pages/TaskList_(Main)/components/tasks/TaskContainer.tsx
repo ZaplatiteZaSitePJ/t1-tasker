@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "./TaskContainer.module.scss";
-import type { TaskProps } from "./Task.interface";
 import Task from "./Task";
-import { getTasks } from "../../../../../funcs/localStorage_api/getTasks";
+import { useTasks } from "../../../../../context/TasksContext";
 
 export default function TaskContainer() {
-	const tasks: TaskProps[] = getTasks()
+	const { tasks } = useTasks();
 
-	if (!tasks) return 
-	
+	if (!tasks) return;
+
 	return (
 		<div className={styles.taskContainer}>
 			{tasks.map((task) => (

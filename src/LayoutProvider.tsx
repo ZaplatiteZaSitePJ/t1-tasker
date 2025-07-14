@@ -7,6 +7,22 @@ export default function LayoutProvider() {
 		<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route index element={<TaskList />} />
+				<Route
+					path="/visualisation"
+					element={
+						<p>
+							Не имеет отношения к дз, хочу позже сделать для себя
+						</p>
+					}
+				/>
+				<Route
+					path="/board"
+					element={
+						<p>
+							Не имеет отношения к дз, хочу позже сделать для себя
+						</p>
+					}
+				/>
 			</Route>
 		</Routes>
 	);

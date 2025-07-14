@@ -49,7 +49,14 @@ export default Task;
 const TaskTopPanel: FC<
 	Pick<TaskProps, "startTime" | "endTime" | "priorites">
 > = ({ startTime, endTime, priorites }) => {
-	if (startTime === "None" && endTime === "None") return <></>;
+	if (startTime === "" && endTime === "")
+		return (
+			<div className={styles.topPanel}>
+				<p style={{ color: getColroFromPriorities(priorites) }}>
+					no time limits
+				</p>
+			</div>
+		);
 
 	return (
 		<div className={styles.topPanel}>

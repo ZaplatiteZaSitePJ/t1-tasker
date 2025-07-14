@@ -16,11 +16,14 @@ import ButtonFilled from "../../../../ui/buttons/ButtonFilled";
 import ButtonsParser from "./funcs/ButtonsParser";
 import type { Priorites } from "../../../../../types/Priopites.type";
 import getColroFromPriorities from "../../../../../funcs/getColorFromPriorities";
-import timeBinder from "./funcs/timeBinder";
 import { addTask } from "../../../../../funcs/localStorage_api/addTask";
 import { timeValidation } from "../../../../../funcs/validation/timeValidation";
+import { useTasks } from "../../../../../context/TasksContext";
+import { getTasks } from "../../../../../funcs/localStorage_api/getTasks";
 
 export default function AddTaskForm() {
+	const { changeTasks } = useTasks();
+
 	const {
 		register,
 		getValues,
@@ -51,10 +54,14 @@ export default function AddTaskForm() {
 	};
 
 	const onSubmit = () => {
-		setValue("startTime", timeBinder(getValues("startTime")));
-		setValue("endTime", timeBinder(getValues("endTime")));
-		console.log(getValues());
-		addTask({...getValues(), id: Math.floor(Math.random() * (10 - 5000 + 1)) + 10})
+		const newTask = {
+			...getValues(),
+			id: Math.floor(Math.random() * (10 - 5000 + 1)) + 10,
+		};
+
+		addTask(newTask);
+		const updatedTasks = getTasks();
+		changeTasks(updatedTasks);
 		reset();
 	};
 
@@ -171,7 +178,10 @@ export default function AddTaskForm() {
 									"Введите время в формате HH:MM (00:00 - 23:59)",
 							},
 							validate: (value) => {
-								return timeValidation(getValues('startTime'), value)
+								return timeValidation(
+									getValues("startTime"),
+									value
+								);
 							},
 						})}
 					/>

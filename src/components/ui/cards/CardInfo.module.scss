@@ -5,6 +5,11 @@
 	white-space: nowrap;
 }
 
+.descriptionContainer {
+	max-height: 4rem;
+	overflow: hidden;
+}
+
 .description {
 	font-size: var(--small-font-size);
 	font-weight: normal;

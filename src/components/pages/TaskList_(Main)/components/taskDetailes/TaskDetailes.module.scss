@@ -1,0 +1,26 @@
+.taskDetailes {
+	padding: 2rem 4rem;
+
+	&__buttonsContainer {
+		display: flex;
+		gap: 0.5rem;
+		margin-bottom: 2rem;
+
+		span {
+			color: var(--light-grey-color);
+		}
+	}
+
+	&__button {
+		color: var(--grey-color);
+		transition: ease 0.2s;
+
+		&:hover {
+			color: var(--black-color);
+		}
+	}
+
+	&__active {
+		color: var(--black-color);
+	}
+}

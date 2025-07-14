@@ -1,0 +1,123 @@
+h3 {
+	font-size: var(--normal-font-size);
+}
+
+.subInfo {
+	color: var(--grey-color);
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+	font-size: var(--small-font-size);
+	font-weight: normal;
+	text-align: right;
+}
+
+.activeButtonPriorites {
+	width: 1.5rem !important;
+	height: 1.5rem !important;
+}
+
+.activeButtonProgress {
+	font-weight: bold !important;
+}
+
+.errorDiv {
+	height: 0.3rem;
+	width: 0.3rem;
+	border-radius: 100%;
+	background-color: rgba(255, 0, 0, 0.705);
+}
+
+.container {
+	margin: auto 0;
+	text-align: center;
+	font-size: var(--large-font-size);
+	font-weight: bold;
+	max-height: 100%;
+	overflow: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--grey-color) transparent;
+
+	&::-webkit-scrollbar {
+		margin-left: 0.5rem;
+		width: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--grey-color);
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
+}
+
+.addForm {
+	width: 50rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	&__inputsContainer {
+		gap: 2rem;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+		margin-bottom: 2rem;
+	}
+
+	&__dateContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1rem;
+
+		span {
+			color: var(--grey-color);
+		}
+	}
+
+	&__prioritesProgressContainer {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	&__prioritiesContainer {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	&__prioritiesChoice {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		height: fit-content;
+	}
+
+	&__prioritesButton {
+		border: 0;
+		border-radius: 100rem;
+		width: 1rem;
+		height: 1rem;
+		transition: ease 0.2s;
+
+		&:hover {
+			transform: translateY(-0.2rem);
+		}
+	}
+
+	&__progressContainer {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	&__buttonsContainer {
+		display: flex;
+		justify-content: space-between;
+	}
+}

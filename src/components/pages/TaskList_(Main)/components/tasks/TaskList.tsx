@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./TaskList.module.scss";
 import Task from "./Task";
 import { useTasks } from "../../../../../context/TasksContext";

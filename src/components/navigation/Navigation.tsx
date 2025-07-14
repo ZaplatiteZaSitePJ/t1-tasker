@@ -1,21 +1,43 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.scss";
 import ButtonText from "../ui/buttons/ButtonText";
+import cn from "classnames";
 
 export default function Navigation() {
 	return (
 		<>
 			<p className={styles.logo}>_daily tasker_</p>
 			<nav className={styles.nav}>
-				<Link to="/" className={styles.nav__link}>
+				<NavLink
+					to="/"
+					className={({ isActive }) =>
+						cn(styles.nav__link, {
+							[styles.nav__active]: isActive,
+						})
+					}
+				>
 					Task List
-				</Link>
-				<Link to="/visualisation" className={styles.nav__link}>
+				</NavLink>
+				<NavLink
+					to="/visualisation"
+					className={({ isActive }) =>
+						cn(styles.nav__link, {
+							[styles.nav__active]: isActive,
+						})
+					}
+				>
 					Visualisation
-				</Link>
-				<Link to="/board" className={styles.nav__link}>
+				</NavLink>
+				<NavLink
+					to="/board"
+					className={({ isActive }) =>
+						cn(styles.nav__link, {
+							[styles.nav__active]: isActive,
+						})
+					}
+				>
 					Board
-				</Link>
+				</NavLink>
 			</nav>
 			<div className={styles.infoContainer}>
 				<ButtonText>⚙ settings</ButtonText>

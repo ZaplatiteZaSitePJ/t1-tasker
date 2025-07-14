@@ -1,8 +1,8 @@
 import { type FC } from "react";
 import styles from "./Task.module.scss";
-import Card from "../../../ui/cards/Card";
+import Card from "../../../../ui/cards/Card";
 import type { TaskProps } from "./Task.interface";
-import getColroFromPriorities from "../../../../funcs/getColorFromPriorities";
+import getColroFromPriorities from "../../../../../funcs/getColorFromPriorities";
 
 const Task: FC<TaskProps> = ({
 	id,

@@ -1,0 +1,16 @@
+.taskList {
+	display: grid;
+	grid-template-columns: 64rem auto;
+	height: 100%;
+
+	&__contentPanel {
+	}
+
+	&__addPanel {
+		padding: 0 1rem;
+		display: grid;
+		grid-template-rows: minmax(100%, 41.7rem);
+		overflow: hidden;
+		border-left: 2px solid var(--light-grey-color);
+	}
+}

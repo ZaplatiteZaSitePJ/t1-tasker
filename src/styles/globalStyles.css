@@ -7,7 +7,6 @@
 a,
 a:link,
 a:visited {
-	color: var(--grey-color);
 	transition: ease 0.2s;
 }
 

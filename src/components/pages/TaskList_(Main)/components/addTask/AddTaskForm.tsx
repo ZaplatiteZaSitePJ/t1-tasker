@@ -17,6 +17,8 @@ import ButtonsParser from "./funcs/ButtonsParser";
 import type { Priorites } from "../../../../../types/Priopites.type";
 import getColroFromPriorities from "../../../../../funcs/getColorFromPriorities";
 import timeBinder from "./funcs/timeBinder";
+import { addTask } from "../../../../../funcs/localStorage_api/addTask";
+import { timeValidation } from "../../../../../funcs/validation/timeValidation";
 
 export default function AddTaskForm() {
 	const {
@@ -52,6 +54,7 @@ export default function AddTaskForm() {
 		setValue("startTime", timeBinder(getValues("startTime")));
 		setValue("endTime", timeBinder(getValues("endTime")));
 		console.log(getValues());
+		addTask({...getValues(), id: Math.floor(Math.random() * (10 - 5000 + 1)) + 10})
 		reset();
 	};
 
@@ -116,6 +119,7 @@ export default function AddTaskForm() {
 						<MenuItem value={"Refactor"}>Refactor</MenuItem>
 						<MenuItem value={"Test"}>Test</MenuItem>
 					</Select>
+					{errors.category && <div className={styles.errorDiv}></div>}
 				</FormControl>
 
 				<FormControl sx={{ width: "10rem", margin: "0 auto" }}>
@@ -131,6 +135,7 @@ export default function AddTaskForm() {
 						<MenuItem value={"In_Progress"}>In_Progress</MenuItem>
 						<MenuItem value={"Done"}>Done</MenuItem>
 					</Select>
+					{errors.status && <div className={styles.errorDiv}></div>}
 				</FormControl>
 
 				<div className={styles.addForm__dateContainer}>
@@ -166,28 +171,7 @@ export default function AddTaskForm() {
 									"Введите время в формате HH:MM (00:00 - 23:59)",
 							},
 							validate: (value) => {
-								if (
-									getValues("startTime") === "" ||
-									value === ""
-								)
-									return true;
-
-								const startH = parseInt(
-									getValues("startTime").slice(0, -3)
-								);
-								const endH = parseInt(value.slice(0, -3), 10);
-
-								const startE = parseInt(
-									getValues("startTime").slice(-2)
-								);
-								const endE = parseInt(value.slice(-2), 10);
-
-								if (startH > endH) {
-									return "error: end time less than start time";
-								} else if (startE > endE) {
-									return "error: end time less than start time";
-								}
-								return true;
+								return timeValidation(getValues('startTime'), value)
 							},
 						})}
 					/>

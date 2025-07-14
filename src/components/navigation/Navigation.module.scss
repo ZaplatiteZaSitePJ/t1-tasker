@@ -1,7 +1,3 @@
-.active {
-	color: var(--black-color);
-}
-
 .logo {
 	color: var(--black-color);
 	font-size: var(--small-font-size);
@@ -21,7 +17,7 @@
 	}
 
 	&__active {
-		color: var(--black-color);
+		color: var(--black-color) !important;
 	}
 }
 

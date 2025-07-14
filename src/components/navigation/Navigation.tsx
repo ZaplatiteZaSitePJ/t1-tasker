@@ -16,7 +16,7 @@ export default function Navigation() {
 						})
 					}
 				>
-					Task List
+					Main
 				</NavLink>
 				<NavLink
 					to="/visualisation"

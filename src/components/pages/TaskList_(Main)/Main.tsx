@@ -1,14 +1,14 @@
 import { type FC } from "react";
-import styles from "./TaskList.module.scss";
-import TaskContainer from "./components/tasks/TaskContainer";
+import styles from "./Main.module.scss";
+import TaskList from "./components/tasks/TaskList";
 import AddTaskForm from "./components/addTask/AddTaskForm";
 
-const TaskList: FC = () => {
+const Main: FC = () => {
 	return (
 		<>
 			<div className={styles.taskList}>
 				<section className={styles.taskList__contentPanel}>
-					<TaskContainer />
+					<TaskList />
 				</section>
 				<section className={styles.taskList__addPanel}>
 					<AddTaskForm />
@@ -18,4 +18,4 @@ const TaskList: FC = () => {
 	);
 };
 
-export default TaskList;
+export default Main;

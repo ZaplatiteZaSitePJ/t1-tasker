@@ -9,8 +9,9 @@
 	&__addPanel {
 		padding: 1rem;
 		display: grid;
-		grid-template-rows: minmax(100%, 845px);
+		grid-template-rows: minmax(100%, 41.7rem);
 		overflow: hidden;
 		border-left: 2px solid var(--light-grey-color);
+		
 	}
 }

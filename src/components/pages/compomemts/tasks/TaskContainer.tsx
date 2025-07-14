@@ -5,6 +5,7 @@ import Task from "./Task";
 
 const tasks: TaskProps[] = [
 	{
+		id: 0,
 		title: "Добавить поиск",
 		description: "Реализовать функционал поиска по задачам.",
 		category: "Feature",
@@ -14,6 +15,7 @@ const tasks: TaskProps[] = [
 		progress: 0,
 	},
 	{
+		id: 1,
 		title: "Обновить README",
 		description: "Добавить инструкции по запуску и структуре проекта.",
 		category: "Documentation",
@@ -23,6 +25,7 @@ const tasks: TaskProps[] = [
 		progress: 100,
 	},
 	{
+		id: 2,
 		title: "Исправить баг с логином",
 		description:
 			"При неверном пароле пользователь не получает сообщение об ошибке.",
@@ -33,6 +36,7 @@ const tasks: TaskProps[] = [
 		progress: 45,
 	},
 	{
+		id: 3,
 		title: "Рефакторинг хука useAuth",
 		description:
 			"Оптимизировать хук авторизации и убрать дублирование кода.",
@@ -43,6 +47,7 @@ const tasks: TaskProps[] = [
 		progress: 0,
 	},
 	{
+		id: 4,
 		title: "Написать тесты для API",
 		description:
 			"Покрыть API-тестами методы авторизации и получения задач.",
@@ -53,6 +58,7 @@ const tasks: TaskProps[] = [
 		progress: 0,
 	},
 	{
+		id: 5,
 		title: "Добавить фильтрацию",
 		description:
 			"Позволить пользователям фильтровать задачи по статусу и приоритету.",
@@ -63,6 +69,7 @@ const tasks: TaskProps[] = [
 		progress: 60,
 	},
 	{
+		id: 6,
 		title: "Документация API",
 		description: "Описать эндпоинты API с примерами запросов и ответов.",
 		category: "Documentation",
@@ -72,6 +79,7 @@ const tasks: TaskProps[] = [
 		progress: 100,
 	},
 	{
+		id: 7,
 		title: "Баг в отчете о задачах",
 		description: "Некорректное отображение завершенных задач в отчете.",
 		category: "Bug",
@@ -81,6 +89,7 @@ const tasks: TaskProps[] = [
 		progress: 0,
 	},
 	{
+		id: 8,
 		title: "Оптимизировать загрузку",
 		description: "Уменьшить время загрузки главной страницы приложения.",
 		category: "Refactor",
@@ -90,6 +99,7 @@ const tasks: TaskProps[] = [
 		progress: 30,
 	},
 	{
+		id: 9,
 		title: "Тесты формы входа",
 		description: "Добавить юнит-тесты для формы авторизации пользователя.",
 		category: "Test",
@@ -105,6 +115,8 @@ export default function TaskContainer() {
 		<div className={styles.taskContainer}>
 			{tasks.map((task) => (
 				<Task
+					key={task.id}
+					id={task.id}
 					title={task.title}
 					description={task.description}
 					priorites={task.priorites}

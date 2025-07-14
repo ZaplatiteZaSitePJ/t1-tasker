@@ -2,13 +2,17 @@ h3 {
 	font-size: var(--normal-font-size);
 }
 
-.activeButton {
+.activeButtonPriorites {
 	width: 1.5rem !important;
 	height: 1.5rem !important;
 }
 
+.activeButtonProgress {
+	font-weight: bold !important;
+}
+
 .container {
-	margin: auto 0;
+	margin: 3rem 0;
 	text-align: center;
 	font-size: var(--large-font-size);
 	font-weight: bold;
@@ -63,7 +67,8 @@ h3 {
 	&__progressContainer {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: 1rem;
 	}
 

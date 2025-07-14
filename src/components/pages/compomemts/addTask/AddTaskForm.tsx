@@ -14,14 +14,40 @@ import {
 } from "@mui/material";
 import ButtonBordered from "../../../ui/buttons/ButtonBordered";
 import ButtonFilled from "../../../ui/buttons/ButtonFilled";
+import ButtonsParser from "./ButtonsParser";
+import type { Priorites } from "../../../../types/Priopites.type";
+import getColroFromPriorities from "../../../../funcs/getColorFromPriorities";
 
 export default function AddTaskForm() {
 	const {
 		register,
 		getValues,
+		setValue,
 		handleSubmit,
+		watch,
 		formState: { errors },
 	} = useForm<TaskProps>({ defaultValues: { priorites: "High" } });
+
+	const prioritesValues = ["High", "Medium", "Low"]
+
+	const prioritesHadndleChoice = (value: string) => {
+		setValue('priorites', value as Priorites)
+		console.log(value)
+	}
+
+	const progressValues = ["0%", "25%", "50%", "75%", "100%"]
+
+	const prorgessHandleChoise = (value: number | string) => {
+		if(typeof value === 'string') {
+			let numValue = parseInt(value.slice(0, -1), 10)
+		    setValue('progress', numValue)
+			console.log(value)
+		}
+	}
+
+	let priorites = watch('priorites')
+
+	let progress = watch('progress')
 
 	return (
 		<div className={styles.container}>
@@ -97,70 +123,51 @@ export default function AddTaskForm() {
 
 				<div className={styles.addForm__prioritiesContainer}>
 					<h3>priorities</h3>
-					<ul className={styles.addForm__prioritiesChoice}>
-						<li>
-							<button
-								type="button"
-								style={{
-									backgroundColor: `var(--high-priorites-color)`,
-								}}
-								className={cn(styles.addForm__prioritesButton, {
-									[styles.activeButton]:
-										getValues("priorites") === "High",
-								})}
-							></button>
-						</li>
-						<li>
-							<button
-								type="button"
-								style={{
-									backgroundColor: `var(--medium-priorites-color)`,
-								}}
-								className={cn(styles.addForm__prioritesButton, {
-									[styles.activeButton]:
-										getValues("priorites") === "Medium",
-								})}
-							></button>
-						</li>
-						<li>
-							<button
-								type="button"
-								style={{
-									backgroundColor: `var(--low-priorites-color)`,
-								}}
-								className={cn(styles.addForm__prioritesButton, {
-									[styles.activeButton]:
-										getValues("priorites") === "Low",
-								})}
-							></button>
-						</li>
-					</ul>
+					<div className={styles.addForm__prioritiesChoice}>
+						<ButtonsParser 
+							aria-label="priorites button group"
+							values={prioritesValues} 
+							action={prioritesHadndleChoice}
+							template={(value, onClick) => (
+								<button
+									aria-label={value}
+									type="button"
+									style={{
+										backgroundColor: `${getColroFromPriorities(value)}`,
+									}}
+									className={cn(styles.addForm__prioritesButton, {
+										[styles.activeButtonPriorites]:
+											priorites === value,
+									})}
+									onClick={onClick}
+								></button>
+                            )}
+						/>
+					</div>
 				</div>
 
 				<div className={styles.addForm__progressContainer}>
 					<h3>progress</h3>
-					<ButtonGroup
-						variant="text"
-						aria-label="Basic button group"
+					<ButtonGroup variant="text"
+						aria-label="Progress button group"
 						sx={{
 							"& .MuiButtonGroup-grouped:not(:last-of-type)": {
 								borderRight: "1px solid var(--grey-color)",
 							},
-						}}
-					>
-						<Button sx={{ color: `var(--black-color)` }}>0%</Button>
-						<Button sx={{ color: `var(--black-color)` }}>
-							25%
-						</Button>
-						<Button sx={{ color: `var(--black-color)` }}>
-							50%
-						</Button>
-						<Button sx={{ color: `var(--black-color)` }}>
-							75%
-						</Button>
-						<Button sx={{ color: `var(--black-color)` }}>
-							100%
-						</Button>
+						}}>
+						<ButtonsParser 
+							values={progressValues} 
+							action={prorgessHandleChoise}
+							template={(value, onClick) => (
+                                <Button sx={{ color: `var(--black-color)`, fontSize: "var(--small-font-size)" }}
+									className={cn({[styles.activeButtonProgress]: progress === parseInt(value.slice(0, -1), 10)})}
+									onClick={onClick}
+								>
+                                  	{value}
+								
+                                </Button>
+                            )}
+						/>
 					</ButtonGroup>
 				</div>
 

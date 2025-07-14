@@ -11,14 +11,21 @@ const Task: FC<TaskProps> = ({
 	category = "Bug",
 	status = "To-do",
 	priorites = "High",
-	date = "None",
+	endTime = "None",
+	startTime = "None",
 	progress = 0,
 }) => {
 	return (
 		<Card
 			key={id}
 			cardBorderColor={getColroFromPriorities(priorites)}
-			topPanel={<TaskTopPanel date={date} priorites={priorites} />}
+			topPanel={
+				<TaskTopPanel
+					startTime={startTime}
+					endTime={endTime}
+					priorites={priorites}
+				/>
+			}
 			bottomPanel={
 				<TaskBottomPanel category={category} status={status} />
 			}
@@ -39,15 +46,16 @@ const Task: FC<TaskProps> = ({
 
 export default Task;
 
-const TaskTopPanel: FC<Pick<TaskProps, "date" | "priorites">> = ({
-	date,
-	priorites,
-}) => {
-	if (date === "None") return <></>;
+const TaskTopPanel: FC<
+	Pick<TaskProps, "startTime" | "endTime" | "priorites">
+> = ({ startTime, endTime, priorites }) => {
+	if (startTime === "None" && endTime === "None") return <></>;
 
 	return (
 		<div className={styles.topPanel}>
-			<p style={{ color: getColroFromPriorities(priorites) }}>{date}</p>
+			<p style={{ color: getColroFromPriorities(priorites) }}>
+				{startTime} - {endTime}
+			</p>
 		</div>
 	);
 };

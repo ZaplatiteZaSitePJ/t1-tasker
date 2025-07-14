@@ -10,6 +10,7 @@ export interface TaskProps {
 	category: Category;
 	status: Status;
 	priorites: Priorites;
-	date: string;
+	startTime: string;
+	endTime: string;
 	progress: number;
 }

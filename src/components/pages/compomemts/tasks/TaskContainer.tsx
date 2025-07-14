@@ -11,7 +11,8 @@ const tasks: TaskProps[] = [
 		category: "Feature",
 		status: "To-do",
 		priorites: "High",
-		date: "2025-07-10",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 0,
 	},
 	{
@@ -21,7 +22,8 @@ const tasks: TaskProps[] = [
 		category: "Documentation",
 		status: "Done",
 		priorites: "Low",
-		date: "2025-06-20",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 100,
 	},
 	{
@@ -32,7 +34,8 @@ const tasks: TaskProps[] = [
 		category: "Bug",
 		status: "In Progress",
 		priorites: "High",
-		date: "2025-07-05",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 45,
 	},
 	{
@@ -43,7 +46,8 @@ const tasks: TaskProps[] = [
 		category: "Refactor",
 		status: "To-do",
 		priorites: "Medium",
-		date: "2025-07-15",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 0,
 	},
 	{
@@ -54,7 +58,8 @@ const tasks: TaskProps[] = [
 		category: "Test",
 		status: "To-do",
 		priorites: "High",
-		date: "2025-07-12",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 0,
 	},
 	{
@@ -65,7 +70,8 @@ const tasks: TaskProps[] = [
 		category: "Feature",
 		status: "In Progress",
 		priorites: "Medium",
-		date: "2025-07-11",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 60,
 	},
 	{
@@ -75,7 +81,8 @@ const tasks: TaskProps[] = [
 		category: "Documentation",
 		status: "Done",
 		priorites: "Medium",
-		date: "2025-06-30",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 100,
 	},
 	{
@@ -85,7 +92,8 @@ const tasks: TaskProps[] = [
 		category: "Bug",
 		status: "To-do",
 		priorites: "High",
-		date: "2025-07-13",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 0,
 	},
 	{
@@ -95,7 +103,8 @@ const tasks: TaskProps[] = [
 		category: "Refactor",
 		status: "In Progress",
 		priorites: "Medium",
-		date: "2025-07-09",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 30,
 	},
 	{
@@ -105,7 +114,8 @@ const tasks: TaskProps[] = [
 		category: "Test",
 		status: "Done",
 		priorites: "Low",
-		date: "2025-07-08",
+		startTime: "12:30",
+		endTime: "15:30",
 		progress: 100,
 	},
 ];
@@ -123,7 +133,8 @@ export default function TaskContainer() {
 					status={task.status}
 					progress={task.progress}
 					category={task.category}
-					date={task.date}
+					startTime={task.startTime}
+					endTime={task.endTime}
 				/>
 			))}
 		</div>

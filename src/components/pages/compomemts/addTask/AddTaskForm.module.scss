@@ -2,6 +2,15 @@ h3 {
 	font-size: var(--normal-font-size);
 }
 
+.subInfo {
+	color: var(--grey-color);
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+	font-size: var(--small-font-size);
+	font-weight: normal;
+	text-align: left;
+}
+
 .activeButtonPriorites {
 	width: 1.5rem !important;
 	height: 1.5rem !important;
@@ -11,13 +20,36 @@ h3 {
 	font-weight: bold !important;
 }
 
+.errorDiv {
+	height: 0.3rem;
+	width: 0.3rem;
+	border-radius: 100%;
+	background-color: rgba(255, 0, 0, 0.705);
+}
+
 .container {
-	margin: 3rem 0;
+	margin: 1rem 0;
 	text-align: center;
 	font-size: var(--large-font-size);
 	font-weight: bold;
 	max-height: 100%;
 	overflow: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--grey-color) transparent;
+
+	&::-webkit-scrollbar {
+		margin-left: 0.5rem;
+		width: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--grey-color);
+		border-radius: 10px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: transparent;
+	}
 }
 
 .addForm {
@@ -34,7 +66,6 @@ h3 {
 
 		span {
 			color: var(--grey-color);
-			margin-top: 0.75rem;
 		}
 	}
 

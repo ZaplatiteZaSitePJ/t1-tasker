@@ -33,7 +33,12 @@ export default function AddTaskForm() {
 		reset,
 		formState: { errors },
 	} = useForm<TaskProps>({
-		defaultValues: { priorites: "High", progress: 0, status: "To-do", category: "Bug" },
+		defaultValues: {
+			priorites: "High",
+			progress: 0,
+			status: "To-do",
+			category: "Bug",
+		},
 	});
 
 	const status = watch("status");
@@ -112,7 +117,7 @@ export default function AddTaskForm() {
 					)}
 				</FormControl>
 
-				<FormControl sx={{ width: "10rem", margin: "0 auto" }}>
+				<FormControl sx={{ width: "fit-content", margin: "0 auto" }}>
 					<InputLabel id="category-label-id">category</InputLabel>
 					<Select
 						label="category"
@@ -133,7 +138,7 @@ export default function AddTaskForm() {
 					{errors.category && <div className={styles.errorDiv}></div>}
 				</FormControl>
 
-				<FormControl sx={{ width: "10rem", margin: "0 auto" }}>
+				<FormControl sx={{ width: "fit-content", margin: "0 auto" }}>
 					<InputLabel id="status-label-id">status</InputLabel>
 					<Select
 						label="status"
@@ -159,7 +164,7 @@ export default function AddTaskForm() {
 						label="start"
 						id="startTime"
 						variant="outlined"
-						sx={{ width: "4.5rem" }}
+						sx={{ width: "5rem" }}
 						{...register("startTime", {
 							pattern: {
 								value: /^([01]\d|2[0-3]):([0-5]\d)$/,
@@ -175,7 +180,7 @@ export default function AddTaskForm() {
 						label="end"
 						id="endTime"
 						variant="outlined"
-						sx={{ width: "4.5rem" }}
+						sx={{ width: "5rem" }}
 						{...register("endTime", {
 							pattern: {
 								value: /^([01]\d|2[0-3]):([0-5]\d)$/,

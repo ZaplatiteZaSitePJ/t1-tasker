@@ -14,3 +14,21 @@ a:visited {
 a:hover {
 	color: var(--black-color);
 }
+
+@media (max-width: 1280px) {
+	:root {
+		--normal-font-size: 1.2vw;
+	}
+}
+
+@media (max-width: 1024px) {
+	:root {
+		--normal-font-size: 1.6vw;
+	}
+}
+
+@media (max-width: 768px) {
+	:root {
+		--normal-font-size: 2.4vw;
+	}
+}

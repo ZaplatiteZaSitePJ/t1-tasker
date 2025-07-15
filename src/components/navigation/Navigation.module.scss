@@ -3,6 +3,10 @@
 	font-size: var(--small-font-size);
 	font-weight: bold;
 	margin-bottom: 3.85rem;
+
+	@media (max-width: 1024px) {
+		margin-bottom: 0rem;
+	}
 }
 
 .nav {
@@ -14,10 +18,16 @@
 		font-weight: bold;
 		font-size: var(--large-font-size);
 		color: var(--grey-color);
+		width: fit-content;
 	}
 
 	&__active {
 		color: var(--black-color) !important;
+	}
+
+	@media (max-width: 1024px) {
+		flex-direction: row;
+		gap: 3rem;
 	}
 }
 

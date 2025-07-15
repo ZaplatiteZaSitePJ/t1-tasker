@@ -5,8 +5,20 @@
 	position: relative;
 	padding: 2.3rem 0;
 
+	@media (max-width: 1024px) {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 5rem 1fr;
+	}
+
 	&__header {
 		display: none;
+
+		@media (max-width: 1024px) {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 1.5rem;
+		}
 	}
 
 	&__sidebar {
@@ -14,10 +26,14 @@
 		padding-left: 2.4rem;
 		display: grid;
 		grid-template-rows: auto 1fr auto;
+		max-height: 92vh;
+
+		@media (max-width: 1024px) {
+			display: none;
+		}
 	}
 
 	&__main {
-		
 	}
 }
 

@@ -17,23 +17,25 @@ import ButtonFilled from "../../../../ui/buttons/ButtonFilled";
 import ButtonsParser from "../addTask/funcs/ButtonsParser";
 import type { Priorites } from "../../../../../types/Priopites.type";
 import getColroFromPriorities from "../../../../../funcs/getColorFromPriorities";
-import { addTask } from "../../../../../funcs/localStorage_api/addTask";
 import { timeValidation } from "../../../../../funcs/validation/timeValidation";
 import { useTasks } from "../../../../../context/TasksContext";
 import { getAllTasks } from "../../../../../funcs/localStorage_api/getAllTasks";
 import type { FC } from "react";
 import type { TaskDetaileFormProps } from "./TaskDetailesForm.type";
-import { useNavigate, useNavigation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getTask } from "../../../../../funcs/localStorage_api/getTask";
 import { changeTask } from "../../../../../funcs/localStorage_api/chengeTask";
 import { deleteTask } from "../../../../../funcs/localStorage_api/deleteTask";
 
-const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly }) => {
+const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
+	isReadOnly,
+	setReadonly,
+}) => {
 	const { changeTasks } = useTasks();
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
-	const {id} = useParams<{ id: string }>()
-	const task = getTask(String(id))
+	const { id } = useParams<{ id: string }>();
+	const task = getTask(String(id));
 
 	const {
 		register,
@@ -71,17 +73,17 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 
 	const onReset = () => {
 		if (!isReadOnly) {
-			reset()
-			setReadonly()
+			reset();
+			setReadonly();
 		}
 	};
 
 	const onDelete = () => {
 		if (!isReadOnly) {
-			deleteTask(task.id)
-			navigate('/')
+			deleteTask(task.id);
+			navigate("/");
 		}
-	}
+	};
 
 	const onSubmit = () => {
 		if (!isReadOnly) {
@@ -92,7 +94,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 			changeTask(newTask);
 			const updatedTasks = getAllTasks();
 			changeTasks(updatedTasks);
-			setReadonly()
+			setReadonly();
 		}
 	};
 
@@ -104,9 +106,12 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 						label="title"
 						variant="standard"
 						fullWidth
-						sx={{'& .MuiInputBase-input': {
-          					fontSize: '1.5rem', fontWeight: "bold",  // Измените значение по своему усмотрению
-        				},}}
+						sx={{
+							"& .MuiInputBase-input": {
+								fontSize: "1.5rem",
+								fontWeight: "bold", // Измените значение по своему усмотрению
+							},
+						}}
 						InputProps={{
 							readOnly: isReadOnly,
 						}}
@@ -122,7 +127,9 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 							},
 						})}
 					/>
-					{!isReadOnly && <p className={styles.subInfo}>5 - 30 symbols</p>}
+					{!isReadOnly && (
+						<p className={styles.subInfo}>5 - 30 symbols</p>
+					)}
 					{errors.title && <div className={styles.errorDiv}></div>}
 				</FormControl>
 
@@ -142,7 +149,9 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 							},
 						})}
 					/>
-					{!isReadOnly && <p className={styles.subInfo}>{"<"} 100 symbols</p>}
+					{!isReadOnly && (
+						<p className={styles.subInfo}>{"<"} 100 symbols</p>
+					)}
 					{errors.description && (
 						<div className={styles.errorDiv}></div>
 					)}
@@ -159,7 +168,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 							id="startTime"
 							variant="outlined"
 							sx={{
-								width: "4.5rem",
+								width: "6rem",
 								cursor: isReadOnly ? "not-allowed" : "pointer",
 							}}
 							InputProps={{
@@ -181,7 +190,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 							id="endTime"
 							variant="outlined"
 							sx={{
-								width: "4.5rem",
+								width: "6rem",
 								cursor: isReadOnly ? "not-allowed" : "pointer",
 							}}
 							InputProps={{
@@ -343,13 +352,24 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 					{...register("content")}
 				/>
 
-				<Divider style={{marginTop: "2rem", backgroundColor: "var(--grey-color)", display: isReadOnly ? "none" : "block"}}/>
+				<Divider
+					style={{
+						marginTop: "2rem",
+						backgroundColor: "var(--grey-color)",
+						display: isReadOnly ? "none" : "block",
+					}}
+				/>
 
-				<div className={styles.addForm__buttonsContainer} style={{display: isReadOnly ? "none" : "flex"}}>
-					
+				<div
+					className={styles.addForm__buttonsContainer}
+					style={{ display: isReadOnly ? "none" : "flex" }}
+				>
 					<ButtonBordered
 						type="submit"
-						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer", color: "var(--high-priorites-color)" }}
+						sx={{
+							cursor: isReadOnly ? "not-allowed" : "pointer",
+							color: "var(--high-priorites-color)",
+						}}
 						onClick={onDelete}
 					>
 						delete task

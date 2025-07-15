@@ -33,7 +33,7 @@ const tasks: TaskProps[] = [
 		priorites: "High",
 		startTime: "12:30",
 		endTime: "15:30",
-		progress: 45,
+		progress: 25,
 	},
 	{
 		id: 3,
@@ -69,7 +69,7 @@ const tasks: TaskProps[] = [
 		priorites: "Medium",
 		startTime: "12:30",
 		endTime: "15:30",
-		progress: 60,
+		progress: 75,
 	},
 	{
 		id: 6,
@@ -102,7 +102,7 @@ const tasks: TaskProps[] = [
 		priorites: "Medium",
 		startTime: "12:30",
 		endTime: "15:30",
-		progress: 30,
+		progress: 25,
 	},
 	{
 		id: 9,
@@ -113,7 +113,7 @@ const tasks: TaskProps[] = [
 		priorites: "Low",
 		startTime: "12:30",
 		endTime: "15:30",
-		progress: 100,
+		progress: 50,
 	},
 ];
 

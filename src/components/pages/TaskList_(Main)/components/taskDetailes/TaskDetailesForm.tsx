@@ -10,6 +10,7 @@ import {
 	FormControl,
 	ButtonGroup,
 	Button,
+	Divider,
 } from "@mui/material";
 import ButtonBordered from "../../../../ui/buttons/ButtonBordered";
 import ButtonFilled from "../../../../ui/buttons/ButtonFilled";
@@ -19,12 +20,17 @@ import getColroFromPriorities from "../../../../../funcs/getColorFromPriorities"
 import { addTask } from "../../../../../funcs/localStorage_api/addTask";
 import { timeValidation } from "../../../../../funcs/validation/timeValidation";
 import { useTasks } from "../../../../../context/TasksContext";
-import { getTasks } from "../../../../../funcs/localStorage_api/getTasks";
+import { getAllTasks } from "../../../../../funcs/localStorage_api/getAllTasks";
 import type { FC } from "react";
 import type { TaskDetaileFormProps } from "./TaskDetailesForm.type";
+import { useParams } from "react-router-dom";
+import { getTask } from "../../../../../funcs/localStorage_api/getTask";
 
 const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 	const { changeTasks } = useTasks();
+
+	const {id} = useParams<{ id: string }>()
+	const task = getTask(String(id))
 
 	const {
 		register,
@@ -35,7 +41,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 		reset,
 		formState: { errors },
 	} = useForm<TaskProps>({
-		defaultValues: { priorites: "High", progress: 0 },
+		defaultValues: task,
 	});
 
 	const priorites = watch("priorites");
@@ -65,7 +71,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 			};
 
 			addTask(newTask);
-			const updatedTasks = getTasks();
+			const updatedTasks = getAllTasks();
 			changeTasks(updatedTasks);
 			reset();
 		}
@@ -79,6 +85,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 						label="title"
 						variant="standard"
 						fullWidth
+						sx={{fontSize: "var(--large-font-size)"}}
 						InputProps={{
 							readOnly: isReadOnly,
 						}}
@@ -94,7 +101,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 							},
 						})}
 					/>
-					<p className={styles.subInfo}>5 - 30 symbols</p>
+					{!isReadOnly && <p className={styles.subInfo}>5 - 30 symbols</p>}
 					{errors.title && <div className={styles.errorDiv}></div>}
 				</FormControl>
 
@@ -114,7 +121,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 							},
 						})}
 					/>
-					<p className={styles.subInfo}>{"<"} 100 symbols</p>
+					{!isReadOnly && <p className={styles.subInfo}>{"<"} 100 symbols</p>}
 					{errors.description && (
 						<div className={styles.errorDiv}></div>
 					)}
@@ -183,6 +190,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 						<Select
 							label="category"
 							labelId="category-label-id"
+							defaultValue={task.category}
 							sx={{ pointerEvents: isReadOnly ? "none" : "auto" }}
 							{...register("category", {
 								required: "Поле обязательно",
@@ -206,14 +214,15 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 						<Select
 							label="status"
 							labelId="status-label-id"
+							defaultValue={task.status}
 							sx={{ pointerEvents: isReadOnly ? "none" : "auto" }}
 							{...register("status", {
 								required: "Поле обязательно",
 							})}
 						>
-							<MenuItem value={"To-do"}>To_do</MenuItem>
-							<MenuItem value={"In_Progress"}>
-								In_Progress
+							<MenuItem value={"To-do"}>To-do</MenuItem>
+							<MenuItem value={"In Progress"}>
+								In Progress
 							</MenuItem>
 							<MenuItem value={"Done"}>Done</MenuItem>
 						</Select>
@@ -302,7 +311,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 
 				<TextField
 					label="content"
-					variant="standard"
+					variant={!isReadOnly ? "outlined" : "standard"}
 					multiline
 					fullWidth
 					InputProps={{
@@ -311,7 +320,16 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 					{...register("content")}
 				/>
 
-				<div className={styles.addForm__buttonsContainer}>
+				<Divider style={{marginTop: "2rem", backgroundColor: "var(--grey-color)", display: isReadOnly ? "none" : "block"}}/>
+
+				<div className={styles.addForm__buttonsContainer} style={{display: isReadOnly ? "none" : "flex"}}>
+					
+					<ButtonBordered
+						type="submit"
+						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer", color: "var(--high-priorites-color)" }}
+					>
+						delete task
+					</ButtonBordered>
 					<ButtonBordered
 						onClick={() => !isReadOnly && reset()}
 						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer" }}
@@ -322,7 +340,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 						type="submit"
 						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer" }}
 					>
-						add
+						save changes
 					</ButtonFilled>
 				</div>
 			</form>

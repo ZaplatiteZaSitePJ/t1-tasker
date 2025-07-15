@@ -19,7 +19,7 @@ import getColroFromPriorities from "../../../../../funcs/getColorFromPriorities"
 import { addTask } from "../../../../../funcs/localStorage_api/addTask";
 import { timeValidation } from "../../../../../funcs/validation/timeValidation";
 import { useTasks } from "../../../../../context/TasksContext";
-import { getTasks } from "../../../../../funcs/localStorage_api/getTasks";
+import { getAllTasks } from "../../../../../funcs/localStorage_api/getAllTasks";
 
 export default function AddTaskForm() {
 	const { changeTasks } = useTasks();
@@ -60,7 +60,7 @@ export default function AddTaskForm() {
 		};
 
 		addTask(newTask);
-		const updatedTasks = getTasks();
+		const updatedTasks = getAllTasks();
 		changeTasks(updatedTasks);
 		reset();
 	};
@@ -138,8 +138,8 @@ export default function AddTaskForm() {
 							required: "Поле обязательно",
 						})}
 					>
-						<MenuItem value={"To-do"}>To_do</MenuItem>
-						<MenuItem value={"In_Progress"}>In_Progress</MenuItem>
+						<MenuItem value={"To-do"}>To-do</MenuItem>
+						<MenuItem value={"In Progress"}>In Progress</MenuItem>
 						<MenuItem value={"Done"}>Done</MenuItem>
 					</Select>
 					{errors.status && <div className={styles.errorDiv}></div>}

@@ -1,6 +1,6 @@
 import { fillTasksFirstTime } from "./fillTasksFirstTime"
 
-export const getTasks = () => {
+export const getAllTasks = () => {
     let wasVisited = localStorage.getItem('wasVisited')
 
     if (!wasVisited) {

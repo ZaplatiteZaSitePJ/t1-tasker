@@ -25,8 +25,9 @@ import type { FC } from "react";
 import type { TaskDetaileFormProps } from "./TaskDetailesForm.type";
 import { useParams } from "react-router-dom";
 import { getTask } from "../../../../../funcs/localStorage_api/getTask";
+import { changeTask } from "../../../../../funcs/localStorage_api/chengeTask";
 
-const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
+const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly }) => {
 	const { changeTasks } = useTasks();
 
 	const {id} = useParams<{ id: string }>()
@@ -67,13 +68,12 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 		if (!isReadOnly) {
 			const newTask = {
 				...getValues(),
-				id: Math.floor(Math.random() * (10 - 5000 + 1)) + 10,
 			};
 
-			addTask(newTask);
+			changeTask(newTask);
 			const updatedTasks = getAllTasks();
 			changeTasks(updatedTasks);
-			reset();
+			setReadonly()
 		}
 	};
 

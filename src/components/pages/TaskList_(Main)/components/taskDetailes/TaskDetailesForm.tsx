@@ -45,6 +45,9 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 		defaultValues: task,
 	});
 
+	const status = watch("status");
+	const category = watch("category");
+
 	const priorites = watch("priorites");
 	const prioritesValues = ["High", "Medium", "Low"];
 	const prioritesHadndleChoice = (value: string) => {
@@ -61,6 +64,13 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 			const numValue = parseInt(value.slice(0, -1), 10);
 			setValue("progress", numValue);
 			console.log(value);
+		}
+	};
+
+	const onReset = () => {
+		if (!isReadOnly) {
+			reset()
+			setReadonly()
 		}
 	};
 
@@ -193,6 +203,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 							label="category"
 							labelId="category-label-id"
 							defaultValue={task.category}
+							value={category}
 							sx={{ pointerEvents: isReadOnly ? "none" : "auto" }}
 							{...register("category", {
 								required: "Поле обязательно",
@@ -217,6 +228,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 							label="status"
 							labelId="status-label-id"
 							defaultValue={task.status}
+							value={status}
 							sx={{ pointerEvents: isReadOnly ? "none" : "auto" }}
 							{...register("status", {
 								required: "Поле обязательно",
@@ -333,7 +345,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 						delete task
 					</ButtonBordered>
 					<ButtonBordered
-						onClick={() => !isReadOnly && reset()}
+						onClick={() => !isReadOnly && onReset()}
 						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer" }}
 					>
 						reset

@@ -85,7 +85,9 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly }) => {
 						label="title"
 						variant="standard"
 						fullWidth
-						sx={{fontSize: "var(--large-font-size)"}}
+						sx={{'& .MuiInputBase-input': {
+          					fontSize: '1.5rem', fontWeight: "bold",  // Измените значение по своему усмотрению
+        				},}}
 						InputProps={{
 							readOnly: isReadOnly,
 						}}

@@ -23,12 +23,14 @@ import { useTasks } from "../../../../../context/TasksContext";
 import { getAllTasks } from "../../../../../funcs/localStorage_api/getAllTasks";
 import type { FC } from "react";
 import type { TaskDetaileFormProps } from "./TaskDetailesForm.type";
-import { useParams } from "react-router-dom";
+import { useNavigate, useNavigation, useParams } from "react-router-dom";
 import { getTask } from "../../../../../funcs/localStorage_api/getTask";
 import { changeTask } from "../../../../../funcs/localStorage_api/chengeTask";
+import { deleteTask } from "../../../../../funcs/localStorage_api/deleteTask";
 
 const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly }) => {
 	const { changeTasks } = useTasks();
+	const navigate = useNavigate()
 
 	const {id} = useParams<{ id: string }>()
 	const task = getTask(String(id))
@@ -73,6 +75,13 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 			setReadonly()
 		}
 	};
+
+	const onDelete = () => {
+		if (!isReadOnly) {
+			deleteTask(task.id)
+			navigate('/')
+		}
+	}
 
 	const onSubmit = () => {
 		if (!isReadOnly) {
@@ -341,6 +350,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({ isReadOnly, setReadonly })
 					<ButtonBordered
 						type="submit"
 						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer", color: "var(--high-priorites-color)" }}
+						onClick={onDelete}
 					>
 						delete task
 					</ButtonBordered>

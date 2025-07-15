@@ -33,8 +33,11 @@ export default function AddTaskForm() {
 		reset,
 		formState: { errors },
 	} = useForm<TaskProps>({
-		defaultValues: { priorites: "High", progress: 0 },
+		defaultValues: { priorites: "High", progress: 0, status: "To-do", category: "Bug" },
 	});
+
+	const status = watch("status");
+	const category = watch("category");
 
 	const priorites = watch("priorites");
 	const prioritesValues = ["High", "Medium", "Low"];
@@ -114,6 +117,7 @@ export default function AddTaskForm() {
 					<Select
 						label="category"
 						labelId="category-label-id"
+						value={category}
 						{...register("category", {
 							required: "Поле обязательно",
 						})}
@@ -134,6 +138,7 @@ export default function AddTaskForm() {
 					<Select
 						label="status"
 						labelId="status-label-id"
+						value={status}
 						{...register("status", {
 							required: "Поле обязательно",
 						})}

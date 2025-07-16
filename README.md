@@ -1,54 +1,113 @@
-# React + TypeScript + Vite
+# Приложения "Менеджер задач" на React + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+(Домашнее задание 1)
 
-Currently, two official plugins are available:
+## Описание кейса:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Цель: Разработать веб-приложение "Менеджер задач", позволяющее
+просматривать список задач и редактировать их.
 
-## Expanding the ESLint configuration
+## Реализованный функционал:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   ### Основная страница
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+    -   Получение всех задач
+    -   Возможность добавить новую задачу
+    -   Получение базовой информации об отдельной задаче (при наведении)
+    -   Роутинг к конкретной задаче
+
+-   ### Страницы конкретных задач
+    -   Получение всех данных о конкретной задаче
+    -   Два режима работы: read-only и editing
+    -   Возможности изменения, сброса изменений и удаления данных.
+
+## Особенности проекта:
+
+-   Сохранение задач между сессиями (благодаря Local Storage)
+-   Упор на высокую отзывчивость компонентов и UI/UX
+-   Адаптив под различные устройства
+
+## Стэк:
+
+-   ### Основной
+    -   HTML / CSS / SCSS
+    -   React / TS
+-   #### Дополнительный
+    -   Local Storage
+    -   Vite
+    -   React Router
+    -   React Hook Form
+    -   Material UI
+
+## Инструкция к запуску через GitHub
+
+```bash
+git clone https://github.com/ZaplatiteZaSitePJ/t1-tasker
+
+cd tasker
+
+npm install
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Структура проекта
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+📂 tasker
+│
+├── 📂 public # Папка для статических ресурсов (иконки, изображения и т.д.)
+│
+├── 📂 src # Исходный код приложения
+│ ├── 📂 components # Переиспользуемые React-компоненты
+│ │ ├── 📂 modals # Компоненты модальных окон
+│ │ └── 📂 navigation # Компоненты для навигации (меню, маршрутизация)
+│ │ ├── 📂 pages # Страницы приложения
+│ │ └── 📂 TaskList (Main) # Главная страница со списком задач
+│ │ └── 📂 components # Дополнительные компоненты главной страницы
+│ │ └── 📜 Main.tsx # Основной компонент главной страницы
+│ │ └── 📜 Main.module.scss # стилизация главной страницы  
+│ ├── 📂 ui # Общие UI-элементы
+│
+│ ├── 📂 context # React Context API (глобальное состояние)
+│
+│ ├── 📂 funcs # Вспомогательные функции и утилиты
+│ │ ├── 📂 localStorage_api # Работа с localStorage
+│ │
+│ │ └── 📂 validation # Валидация данных
+│
+│ ├── 📂 styles # Стили проекта
+│
+│ ├── 📂 types # Общие TypeScript-типы и интерфейсы
+│
+│ ├── 📜 App.tsx # Корневой компонент приложения
+│ ├── 📜 Layout.tsx # Обёртка приложения
+│ ├── 📜 LayoutProvider.tsx # Описание Роутинга
+│ ├── 📜 main.tsx # Точка входа в приложение
+│ ├── 📜 index.css # Глобальные стили (импорт стилей из папки styles)
+│ ├── 📜 Layout.module.scss # Cтили орбертки приложения
+│ └── 📜 vite-env.d.ts # Типизация окружения Vite
+│
+├── 📜 .gitignore # Исключения для Git
+├── 📜 eslint.config.js # Настройки линтинга
+├── 📜 index.html # Главный HTML-файл приложения
+├── 📜 package.json # Список зависимостей и скриптов
+├── 📜 package-lock.json # Зафиксированные версии пакетов
+├── 📜 tsconfig.json # Основной конфиг TypeScript
+├── 📜 tsconfig.app.json # TS-конфиг для приложения
+├── 📜 tsconfig.node.json # TS-конфиг для Node-окружения
+├── 📜 vite.config.ts # Конфигурация сборщика Vite
+└── 📜 README.md # Документация по проекту
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Планы по развитию:
+
+### Первостепенные:
+
+    - Переделать логику глобального контекста (Добавить Redux + CRUD, через него обновлять localStorage)
+    - Привести проект к FSD
+    - добавить задачам поле createdAt
+
+### Дополнительно:
+
+    - Переделать логику глобального контекста (Добавить Redux + CRUD, через него обновлять localStorage)
+    - Привести проект к FSD
+    - Сделать страницу Board с фильтрацией по категории, статусу и приоритету
+    - Сделать страницу Visualization с визуализацей задач по времени ()

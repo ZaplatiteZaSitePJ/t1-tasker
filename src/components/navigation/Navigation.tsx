@@ -40,7 +40,7 @@ export default function Navigation() {
 				</NavLink>
 			</nav>
 			<div className={styles.infoContainer}>
-				<ButtonText>⚙ settings</ButtonText>
+				<ButtonText>⚙ info</ButtonText>
 			</div>
 		</>
 	);

@@ -109,7 +109,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 						sx={{
 							"& .MuiInputBase-input": {
 								fontSize: "1.5rem",
-								fontWeight: "bold", // Измените значение по своему усмотрению
+								fontWeight: "bold",
 							},
 						}}
 						InputProps={{
@@ -139,6 +139,12 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 						variant="standard"
 						multiline
 						fullWidth
+						sx={{
+							"& .MuiInputBase-input": {
+								fontSize: "var(--normal-font-size)",
+								fontWeight: "normal", 
+							},
+						}}
 						InputProps={{
 							readOnly: isReadOnly,
 						}}
@@ -382,7 +388,12 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 					</ButtonBordered>
 					<ButtonFilled
 						type="submit"
-						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer" }}
+						sx={{ cursor: isReadOnly ? "not-allowed" : "pointer",
+							 	'@media (max-width: 425px)': {
+                        			width: '100%',
+                        			marginBottom: '2rem',
+                    		}, 
+						}}
 					>
 						save changes
 					</ButtonFilled>

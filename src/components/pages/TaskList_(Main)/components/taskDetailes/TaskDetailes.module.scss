@@ -2,6 +2,19 @@
 	padding: 2rem 4rem;
 	height: 88vh;
 
+	@media(max-width: 1024px) {
+		height: 80vh;
+	}
+
+	@media(max-width: 768px) {
+		padding: 2rem 2rem;
+	}
+
+	@media(max-width: 425px) {
+		padding: 2rem 1rem;
+		height: 80vh;
+	}
+
 	&__buttonsContainer {
 		display: flex;
 		gap: 0.5rem;

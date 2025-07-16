@@ -47,6 +47,7 @@
 }
 
 .addButton {
+	
 	display: none;
 	color: var(--grey-color);
 	font-size: var(--large-font-size);
@@ -63,6 +64,8 @@
 	}
 
 	@media (max-width: 768px) {
-		display: inline-block;
+		display: block;
+		max-width: min-content;
+		align-self: center;
 	}
 }

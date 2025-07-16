@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./TaskDetailes.module.scss";
 import cn from "classnames";
 import TaskDetailesForm from "./TaskDetailesForm";
@@ -7,8 +7,8 @@ export default function TaskDetailes() {
 	const [isReadonly, setIsReadonly] = useState<boolean>(true);
 
 	const setReadonly = () => {
-		setIsReadonly(true)
-	}
+		setIsReadonly(true);
+	};
 
 	const changeMod = (mod: boolean) => {
 		if (!mod === isReadonly) {
@@ -40,7 +40,10 @@ export default function TaskDetailes() {
 				</button>
 			</div>
 
-			<TaskDetailesForm isReadOnly={isReadonly} setReadonly={setReadonly}/>
+			<TaskDetailesForm
+				isReadOnly={isReadonly}
+				setReadonly={setReadonly}
+			/>
 		</div>
 	);
 }

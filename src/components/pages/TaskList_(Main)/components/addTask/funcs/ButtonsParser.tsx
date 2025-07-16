@@ -1,4 +1,3 @@
-import React from "react";
 import type { FC } from "react";
 import type { ReactNode } from "react";
 
@@ -15,7 +14,7 @@ const ButtonsParser: FC<ButtonsParserProps> = ({
 }) => {
 	return (
 		<>
-			{values.map((value, index) => {
+			{values.map((value) => {
 				return template(value, () => action(value));
 			})}
 		</>

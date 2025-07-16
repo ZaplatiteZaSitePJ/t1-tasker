@@ -40,7 +40,12 @@ export default function Navigation() {
 				</NavLink>
 			</nav>
 			<div className={styles.infoContainer}>
-				<ButtonText>⚙ info</ButtonText>
+				<a
+					href="https://github.com/ZaplatiteZaSitePJ/t1-tasker"
+					target="_blank"
+				>
+					<ButtonText>⚙ info</ButtonText>
+				</a>
 			</div>
 		</>
 	);

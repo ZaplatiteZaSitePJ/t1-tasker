@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import type { ButtonProps } from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 
-const ButtonBordered = styled(Button)<ButtonProps>(({ theme }) => ({
+const ButtonBordered = styled(Button)<ButtonProps>(() => ({
 	backgroundColor: "transparent",
 	width: "fit-content",
 	color: "var(--black-color)",

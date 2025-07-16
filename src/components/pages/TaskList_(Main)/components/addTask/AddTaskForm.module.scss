@@ -35,6 +35,10 @@ h3 {
 	overflow: auto;
 	scrollbar-width: thin;
 	scrollbar-color: var(--grey-color) transparent;
+	
+	h2 {
+		margin-bottom: 1rem;
+	}
 
 	&::-webkit-scrollbar {
 		margin-left: 0.5rem;

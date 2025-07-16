@@ -1,10 +1,10 @@
 import { type FC } from "react";
-import styles from "./Task.module.scss";
+import styles from "./TaskItem.module.scss";
 import Card from "../../../../ui/cards/Card";
 import type { TaskProps } from "./Task.interface";
 import getColroFromPriorities from "../../../../../funcs/getColorFromPriorities";
 
-const Task: FC<TaskProps> = ({
+const TaskItem: FC<TaskProps> = ({
 	id,
 	title = "Без названия",
 	description = "",
@@ -44,7 +44,7 @@ const Task: FC<TaskProps> = ({
 	);
 };
 
-export default Task;
+export default TaskItem;
 
 const TaskTopPanel: FC<
 	Pick<TaskProps, "startTime" | "endTime" | "priorites">

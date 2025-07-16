@@ -1,5 +1,5 @@
 import styles from "./TaskList.module.scss";
-import Task from "./Task";
+import TaskItem from "./TaskItem";
 import { useTasks } from "../../../../../context/TasksContext";
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,7 @@ export default function TaskList() {
 		<div className={styles.taskContainer}>
 			{tasks.map((task) => (
 				<Link to={`/${task.id}`}>
-					<Task
+					<TaskItem
 						key={task.id}
 						id={task.id}
 						title={task.title}

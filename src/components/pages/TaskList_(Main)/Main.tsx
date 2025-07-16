@@ -14,7 +14,7 @@ const Main: FC = () => {
 		<>
 			<div className={styles.taskList}>
 				<button className={styles.addButton} onClick={handleOpen}>
-					Add Task
+					+
 				</button>
 				{showModal && (
 					<Modal onClose={handleClose}>

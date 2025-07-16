@@ -6,6 +6,10 @@
 	text-align: justify;
 	transition: transform ease 0.2s;
 
+	@media (max-width: 425px) {
+		width: 100%;
+	}
+
 	&:hover {
 		transform: translateY(-0.5rem);
 	}

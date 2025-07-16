@@ -9,6 +9,7 @@ a:link,
 a:visited {
 	transition: ease 0.2s;
 	color: var(--grey-color);
+	height: fit-content;
 }
 
 a:hover {
@@ -30,5 +31,11 @@ a:hover {
 @media (max-width: 768px) {
 	:root {
 		--normal-font-size: 2.4vw;
+	}
+}
+
+@media (max-width: 425px) {
+	:root {
+		--normal-font-size: 4.5vw;
 	}
 }

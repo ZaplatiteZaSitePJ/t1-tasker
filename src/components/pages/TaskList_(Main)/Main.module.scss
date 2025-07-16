@@ -21,6 +21,11 @@
 		overflow: auto;
 	}
 
+	@media (max-width: 425px) {
+		padding-top: 0.5rem;
+		align-items: center;
+	}
+
 	&__contentPanel {
 	}
 
@@ -46,10 +51,15 @@
 	color: var(--grey-color);
 	font-size: var(--large-font-size);
 	font-weight: bold;
+	padding: 0.25rem 0.6rem;
 	transition: ease 0.2s;
+	border: 0.3rem solid var(--light-grey-color);
+	border-radius: 100%;
 
 	&:hover {
 		color: var(--black-color);
+		font-size: 1.5rem;
+		padding: 0.25rem 0.8rem;
 	}
 
 	@media (max-width: 768px) {

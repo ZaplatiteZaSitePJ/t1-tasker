@@ -8,7 +8,7 @@ export default function LayoutProvider() {
 		<Routes>
 			<Route path="/" element={<Layout />}>
 				<Route index element={<Main />} />
-				<Route path=":id" element={<TaskDetailes />} />
+				<Route path="tasks/:id" element={<TaskDetailes />} />
 				<Route
 					path="/visualisation"
 					element={

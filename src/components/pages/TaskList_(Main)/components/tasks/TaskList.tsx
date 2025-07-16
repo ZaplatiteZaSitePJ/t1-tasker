@@ -11,7 +11,7 @@ export default function TaskList() {
 	return (
 		<div className={styles.taskContainer}>
 			{tasks.map((task) => (
-				<Link to={`/${task.id}`}>
+				<Link to={`/tasks/${task.id}`}>
 					<TaskItem
 						key={task.id}
 						id={task.id}

@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import type { ReactNode } from "react";
-import type { TaskProps } from "../components/pages/TaskList_(Main)/components/tasks/Task.interface";
-import { getAllTasks } from "../funcs/localStorage_api/getAllTasks";
+import type { TaskProps } from "@shared/types/Task.interface";
+import { getAllTasks } from "@features/Tasks/api/localstorage";
 
 type TaskContextProps = {
 	tasks: TaskProps[];

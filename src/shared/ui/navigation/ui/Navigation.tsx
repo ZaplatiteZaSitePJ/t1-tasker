@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.scss";
-import ButtonText from "../ui/buttons/ButtonText";
+import { ButtonText } from "@shared/ui/ui-kit";
 import cn from "classnames";
 
 export default function Navigation() {

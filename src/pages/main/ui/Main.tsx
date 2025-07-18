@@ -1,7 +1,7 @@
 import { useState, type FC } from "react";
 import styles from "./Main.module.scss";
-import TaskList from "./components/tasks/TaskList";
-import AddTaskForm from "./components/addTask/AddTaskForm";
+import TaskList from "@widgets/TaskList/ui/TaskList";
+import AddTaskForm from "@widgets/AddTask/ui/AddTaskForm";
 import Modal from "@shared/ui/modals/ui/Modals";
 
 const Main: FC = () => {

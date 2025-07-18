@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
-import ButtonsParser from "./funcs/ButtonsParser";
+import ButtonsParser from "@features/models/ButtonParser";
 import type { Priorites } from "@shared/types/Priopites.type";
 import { getColroFromPriorities } from "@features/lib";
 import { addTask } from "@features/Tasks/api/localstorage";

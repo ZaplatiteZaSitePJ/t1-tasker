@@ -2,20 +2,20 @@
 	padding: 2rem 4rem;
 	height: 88vh;
 
-	@media(max-width: 1024px) {
+	@media (max-width: 1024px) {
 		height: 80vh;
 	}
 
-	@media(max-width: 768px) {
+	@media (max-width: 768px) {
 		padding: 2rem 2rem;
 	}
 
-	@media(max-width: 425px) {
+	@media (max-width: 425px) {
 		padding: 2rem 1rem;
 		height: 80vh;
 	}
 
-	&__buttonsContainer {
+	&__topContainer {
 		display: flex;
 		gap: 0.5rem;
 		margin-bottom: 2rem;
@@ -36,5 +36,13 @@
 
 	&__active {
 		color: var(--black-color);
+	}
+
+	&__createdAt {
+		font-size: var(--small-font-size);
+		span {
+			color: var(--grey-color);
+		}
+		margin-bottom: 0.5rem;
 	}
 }

@@ -19,6 +19,7 @@ import EndTimeInput from "@features/Form/ui/inputs/EndTimeInput";
 import PrioritiesSelect from "@features/Form/ui/selects/PrioritiesSelect";
 import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
 import ContentInput from "@features/Form/ui/inputs/ContentInput";
+import { getDate } from "@features/lib/getDate";
 
 export default function AddTaskForm() {
 	const { changeTasks } = useTasks();
@@ -62,6 +63,7 @@ export default function AddTaskForm() {
 		const newTask = {
 			...getValues(),
 			id: Math.floor(Math.random() * (10 - 5000 + 1)) + 10,
+			createdAt: getDate(),
 		};
 
 		addTask(newTask);

@@ -13,4 +13,5 @@ export interface TaskProps {
 	startTime: string;
 	endTime: string;
 	progress: number;
+	createdAt: string;
 }

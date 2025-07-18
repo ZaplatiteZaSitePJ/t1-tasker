@@ -11,6 +11,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 0,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 1,
@@ -22,6 +23,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 100,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 2,
@@ -34,6 +36,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 25,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 3,
@@ -46,6 +49,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 0,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 4,
@@ -58,6 +62,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 0,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 5,
@@ -70,6 +75,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 75,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 6,
@@ -81,6 +87,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 100,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 7,
@@ -92,6 +99,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 0,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 8,
@@ -103,6 +111,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 25,
+		createdAt: "19.07.2025",
 	},
 	{
 		id: 9,
@@ -114,6 +123,7 @@ const tasks: TaskProps[] = [
 		startTime: "12:30",
 		endTime: "15:30",
 		progress: 50,
+		createdAt: "19.07.2025",
 	},
 ];
 

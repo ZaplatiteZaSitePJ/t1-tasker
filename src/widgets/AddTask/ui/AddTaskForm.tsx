@@ -117,7 +117,10 @@ export default function AddTaskForm() {
 
 				<StatusSelect
 					value={status}
-					sx={{ width: "fit-content", margin: "0 auto" }}
+					sx={{
+						width: "fit-content",
+						margin: "0 auto",
+					}}
 					register={{
 						...register("status", {
 							required: "Поле обязательно",

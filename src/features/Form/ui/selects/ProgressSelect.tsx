@@ -9,9 +9,14 @@ const options = ["0%", "25%", "50%", "75%", "100%"];
 type PrioritiesProps = {
 	action: (value: number | string) => void;
 	progress: number;
+	isAvailable?: boolean;
 };
 
-const ProgressSelect: FC<PrioritiesProps> = ({ progress, action }) => {
+const ProgressSelect: FC<PrioritiesProps> = ({
+	progress,
+	action,
+	isAvailable = true,
+}) => {
 	return (
 		<ButtonGroup
 			variant="text"
@@ -29,6 +34,7 @@ const ProgressSelect: FC<PrioritiesProps> = ({ progress, action }) => {
 				template={(value, onClick) => (
 					<Button
 						sx={{
+							cursor: isAvailable ? "pointer" : "not-allowed",
 							color: `var(--black-color)`,
 							fontSize: "var(--small-font-size)",
 						}}

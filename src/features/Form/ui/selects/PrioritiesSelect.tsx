@@ -9,9 +9,14 @@ const options = ["High", "Medium", "Low"];
 type PrioritiesProps = {
 	action: (value: string) => void;
 	priorites: string;
+	isAvailable?: boolean;
 };
 
-const PrioritiesSelect: FC<PrioritiesProps> = ({ priorites, action }) => {
+const PrioritiesSelect: FC<PrioritiesProps> = ({
+	priorites,
+	action,
+	isAvailable = true,
+}) => {
 	return (
 		<div className={styles.prioritiesChoice}>
 			<ButtonsParser
@@ -27,6 +32,7 @@ const PrioritiesSelect: FC<PrioritiesProps> = ({ priorites, action }) => {
 						}}
 						className={cn(styles.prioritesButton, {
 							[styles.activeButton]: priorites === value,
+							[styles.notAvailable]: isAvailable === false,
 						})}
 						onClick={onClick}
 					></button>

@@ -1,0 +1,41 @@
+:root {
+	font-size: var(--normal-font-size);
+	font-family: "Arial";
+	color: var(--black-color);
+}
+
+a,
+a:link,
+a:visited {
+	transition: ease 0.2s;
+	color: var(--grey-color);
+	height: fit-content;
+}
+
+a:hover {
+	color: var(--black-color);
+}
+
+@media (max-width: 1280px) {
+	:root {
+		--normal-font-size: 1.2vw;
+	}
+}
+
+@media (max-width: 1024px) {
+	:root {
+		--normal-font-size: 1.6vw;
+	}
+}
+
+@media (max-width: 768px) {
+	:root {
+		--normal-font-size: 2.4vw;
+	}
+}
+
+@media (max-width: 425px) {
+	:root {
+		--normal-font-size: 4.5vw;
+	}
+}

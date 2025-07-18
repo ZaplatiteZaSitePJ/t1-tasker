@@ -1,0 +1,16 @@
+:root {
+	/* FONTS */
+	--normal-font-size: 1.041vw;
+	--large-font-size: 1.2rem;
+	--small-font-size: 0.8rem;
+
+	/* COLORS */
+	/* PREVIOS */
+	--black-color: #1e1e1e;
+	--grey-color: #8d8e8f;
+	--light-grey-color: #d9d9d9;
+	/* PRIORITES */
+	--high-priorites-color: #c44444;
+	--medium-priorites-color: #7e44c4;
+	--low-priorites-color: #44b1c4;
+}

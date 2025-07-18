@@ -4,16 +4,10 @@ import type { FC } from "react";
 
 type Props = InputProps & {
 	value: string;
-	onChange: (value: string) => void;
+	onChange?: (value: string) => void;
 };
 
-const StatusSelect: FC<Props> = ({
-	sx,
-	value,
-	onChange,
-	register,
-	subContent,
-}) => {
+const StatusSelect: FC<Props> = ({ sx, value, register, subContent }) => {
 	return (
 		<FormControl sx={sx}>
 			<InputLabel id="status-label-id">status</InputLabel>
@@ -22,7 +16,6 @@ const StatusSelect: FC<Props> = ({
 				labelId="status-label-id"
 				value={value}
 				{...register}
-				onChange={(e) => onChange(e.target.value)}
 			>
 				<MenuItem value={"To-do"}>To-do</MenuItem>
 				<MenuItem value={"In Progress"}>In Progress</MenuItem>

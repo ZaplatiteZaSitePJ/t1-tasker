@@ -1,25 +1,24 @@
 import styles from "./AddTaskForm.module.scss";
-import cn from "classnames";
 import { useForm } from "react-hook-form";
 import type { TaskProps } from "@shared/types/Task.interface";
-import {
-	TextField,
-	Select,
-	MenuItem,
-	InputLabel,
-	FormControl,
-	ButtonGroup,
-	Button,
-} from "@mui/material";
 import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
-import ButtonsParser from "@features/Form/funcs/models/ButtonParser";
 import type { Priorites } from "@shared/types/Priopites.type";
-import { getColroFromPriorities } from "@features/lib";
 import { addTask } from "@features/Tasks/api/localstorage";
-import { timeValidation } from "@features/lib";
 import { useTasks } from "@app/context";
 import { getAllTasks } from "@features/Tasks/api/localstorage";
+import TitleInput from "@features/Form/ui/inputs/TitleInput";
+import { titleOption } from "@features/Form/ui/options/Title.options";
+import DescriptionInput from "@features/Form/ui/inputs/DescriptionInput";
+import { descriptionOptions } from "@features/Form/ui/options/Description.options";
+import CategorySelect from "@features/Form/ui/selects/CategorySelect";
+import StatusSelect from "@features/Form/ui/selects/StatusSelect";
+import StartTimeInput from "@features/Form/ui/inputs/StartTimeInput";
+import { timeOptions } from "@features/Form/ui/options/Time.options";
+import EndTimeInput from "@features/Form/ui/inputs/EndTimeInput";
+import PrioritiesSelect from "@features/Form/ui/selects/PrioritiesSelect";
+import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
+import ContentInput from "@features/Form/ui/inputs/ContentInput";
 
 export default function AddTaskForm() {
 	const { changeTasks } = useTasks();
@@ -45,14 +44,12 @@ export default function AddTaskForm() {
 	const category = watch("category");
 
 	const priorites = watch("priorites");
-	const prioritesValues = ["High", "Medium", "Low"];
 	const prioritesHadndleChoice = (value: string) => {
 		setValue("priorites", value as Priorites);
 		console.log(value);
 	};
 
 	const progress = watch("progress");
-	const progressValues = ["0%", "25%", "50%", "75%", "100%"];
 	const prorgessHandleChoise = (value: number | string) => {
 		if (typeof value === "string") {
 			const numValue = parseInt(value.slice(0, -1), 10);
@@ -77,198 +74,102 @@ export default function AddTaskForm() {
 		<div className={styles.container}>
 			<h2>Add Task</h2>
 			<form className={styles.addForm} onSubmit={handleSubmit(onSubmit)}>
-				<FormControl>
-					<TextField
-						label="title"
-						variant="standard"
-						fullWidth
-						{...register("title", {
-							required: "Это поле обязательно",
-							minLength: {
-								value: 5,
-								message: "title min size is 5 symbols",
-							},
-							maxLength: {
-								value: 30,
-								message: "title max size is 30 symbols",
-							},
-						})}
-					/>
-					<p className={styles.subInfo}>5 - 30 symbols</p>
-					{errors.title && <div className={styles.errorDiv}></div>}
-				</FormControl>
+				<TitleInput
+					register={register("title", titleOption)}
+					subContent={
+						<>
+							<p className={styles.subInfo}>5 - 30 symbols</p>
+							{errors.title && (
+								<div className={styles.errorDiv}></div>
+							)}
+						</>
+					}
+				/>
 
-				<FormControl>
-					<TextField
-						label="description"
-						variant="standard"
-						multiline
-						fullWidth
-						{...register("description", {
-							maxLength: {
-								value: 100,
-								message: "description max size is 100 symbols",
-							},
-						})}
-					/>
-					<p className={styles.subInfo}>{"<"} 100 symbols</p>
-					{errors.description && (
-						<div className={styles.errorDiv}></div>
-					)}
-				</FormControl>
+				<DescriptionInput
+					register={register("description", descriptionOptions)}
+					subContent={
+						<>
+							<p className={styles.subInfo}>{"<"} 100 symbols</p>
+							{errors.description && (
+								<div className={styles.errorDiv}></div>
+							)}
+						</>
+					}
+				/>
 
-				<FormControl sx={{ width: "fit-content", margin: "0 auto" }}>
-					<InputLabel id="category-label-id">category</InputLabel>
-					<Select
-						label="category"
-						labelId="category-label-id"
-						value={category}
-						{...register("category", {
+				<CategorySelect
+					value={category}
+					sx={{ width: "fit-content", margin: "0 auto" }}
+					register={{
+						...register("category", {
 							required: "Поле обязательно",
-						})}
-					>
-						<MenuItem value={"Feature"}>Feature</MenuItem>
-						<MenuItem value={"Bug"}>Bug</MenuItem>
-						<MenuItem value={"Documentation"}>
-							Documentation
-						</MenuItem>
-						<MenuItem value={"Refactor"}>Refactor</MenuItem>
-						<MenuItem value={"Test"}>Test</MenuItem>
-					</Select>
-					{errors.category && <div className={styles.errorDiv}></div>}
-				</FormControl>
+						}),
+					}}
+					subContent={
+						<>
+							{errors.category && (
+								<div className={styles.errorDiv}></div>
+							)}
+						</>
+					}
+				/>
 
-				<FormControl sx={{ width: "fit-content", margin: "0 auto" }}>
-					<InputLabel id="status-label-id">status</InputLabel>
-					<Select
-						label="status"
-						labelId="status-label-id"
-						value={status}
-						{...register("status", {
+				<StatusSelect
+					value={status}
+					sx={{ width: "fit-content", margin: "0 auto" }}
+					register={{
+						...register("status", {
 							required: "Поле обязательно",
-						})}
-					>
-						<MenuItem value={"To-do"}>To-do</MenuItem>
-						<MenuItem value={"In Progress"}>In Progress</MenuItem>
-						<MenuItem value={"Done"}>Done</MenuItem>
-					</Select>
-					{errors.status && <div className={styles.errorDiv}></div>}
-				</FormControl>
+						}),
+					}}
+					subContent={
+						<>
+							{errors.status && (
+								<div className={styles.errorDiv}></div>
+							)}
+						</>
+					}
+				/>
 
 				<div className={styles.addForm__dateContainer}>
 					{errors.startTime && (
 						<div className={styles.errorDiv}></div>
 					)}
-					<TextField
-						placeholder="12:30"
-						label="start"
-						id="startTime"
-						variant="outlined"
+
+					<StartTimeInput
+						register={register("startTime", timeOptions)}
 						sx={{ width: "5rem" }}
-						{...register("startTime", {
-							pattern: {
-								value: /^([01]\d|2[0-3]):([0-5]\d)$/,
-								message:
-									"Введите время в формате HH:MM (00:00 - 23:59)",
-							},
-						})}
 					/>
 
 					<span> — </span>
-					<TextField
-						placeholder="15:00"
-						label="end"
-						id="endTime"
-						variant="outlined"
+
+					<EndTimeInput
+						register={register("endTime", timeOptions)}
 						sx={{ width: "5rem" }}
-						{...register("endTime", {
-							pattern: {
-								value: /^([01]\d|2[0-3]):([0-5]\d)$/,
-								message:
-									"Введите время в формате HH:MM (00:00 - 23:59)",
-							},
-							validate: (value) => {
-								return timeValidation(
-									getValues("startTime"),
-									value
-								);
-							},
-						})}
 					/>
 					{errors.endTime && <div className={styles.errorDiv}></div>}
 				</div>
 
 				<div className={styles.addForm__prioritiesContainer}>
 					<h3>priorities</h3>
-					<div className={styles.addForm__prioritiesChoice}>
-						<ButtonsParser
-							aria-label="priorites button group"
-							values={prioritesValues}
-							action={prioritesHadndleChoice}
-							template={(value, onClick) => (
-								<button
-									aria-label={value}
-									type="button"
-									style={{
-										backgroundColor: `${getColroFromPriorities(
-											value
-										)}`,
-									}}
-									className={cn(
-										styles.addForm__prioritesButton,
-										{
-											[styles.activeButtonPriorites]:
-												priorites === value,
-										}
-									)}
-									onClick={onClick}
-								></button>
-							)}
-						/>
-					</div>
+
+					<PrioritiesSelect
+						priorites={priorites}
+						action={prioritesHadndleChoice}
+					/>
 				</div>
 
 				<div className={styles.addForm__progressContainer}>
 					<h3>progress</h3>
-					<ButtonGroup
-						variant="text"
-						aria-label="Progress button group"
-						sx={{
-							"& .MuiButtonGroup-grouped:not(:last-of-type)": {
-								borderRight: "1px solid var(--grey-color)",
-							},
-						}}
-					>
-						<ButtonsParser
-							values={progressValues}
-							action={prorgessHandleChoise}
-							template={(value, onClick) => (
-								<Button
-									sx={{
-										color: `var(--black-color)`,
-										fontSize: "var(--small-font-size)",
-									}}
-									className={cn({
-										[styles.activeButtonProgress]:
-											progress ===
-											parseInt(value.slice(0, -1), 10),
-									})}
-									onClick={onClick}
-								>
-									{value}
-								</Button>
-							)}
-						/>
-					</ButtonGroup>
+
+					<ProgressSelect
+						progress={progress}
+						action={prorgessHandleChoise}
+					/>
 				</div>
 
-				<TextField
-					label="content"
-					variant="standard"
-					multiline
-					fullWidth
-					{...register("content")}
-				/>
+				<ContentInput register={register("content")} />
 
 				<div className={styles.addForm__buttonsContainer}>
 					<ButtonBordered onClick={() => reset()}>

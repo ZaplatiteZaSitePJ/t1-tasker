@@ -4,16 +4,10 @@ import type { FC } from "react";
 
 type Props = InputProps & {
 	value: string;
-	onChange: (value: string) => void;
+	onChange?: (value: string) => void;
 };
 
-const CategorySelect: FC<Props> = ({
-	sx,
-	value,
-	onChange,
-	register,
-	subContent,
-}) => {
+const CategorySelect: FC<Props> = ({ sx, value, register, subContent }) => {
 	return (
 		<FormControl sx={sx}>
 			<InputLabel id="category-label-id">category</InputLabel>
@@ -22,7 +16,6 @@ const CategorySelect: FC<Props> = ({
 				labelId="category-label-id"
 				value={value}
 				{...register}
-				onChange={(e) => onChange(e.target.value)}
 			>
 				<MenuItem value={"Feature"}>Feature</MenuItem>
 				<MenuItem value={"Bug"}>Bug</MenuItem>

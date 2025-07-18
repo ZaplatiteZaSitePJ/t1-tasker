@@ -106,9 +106,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 							fontWeight: "bold",
 						},
 					}}
-					InputProps={{
-						readOnly: isReadOnly,
-					}}
+					isAvailable={!isReadOnly}
 					register={register("title", titleOption)}
 					subContent={
 						<>
@@ -130,6 +128,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 							fontWeight: "normal",
 						},
 					}}
+					isAvailable={!isReadOnly}
 					subContent={
 						<>
 							{!isReadOnly && (
@@ -156,9 +155,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 								width: "6rem",
 								cursor: isReadOnly ? "not-allowed" : "pointer",
 							}}
-							InputProps={{
-								readOnly: isReadOnly,
-							}}
+							isAvailable={!isReadOnly}
 						/>
 
 						<span> — </span>
@@ -177,9 +174,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 								width: "6rem",
 								cursor: isReadOnly ? "not-allowed" : "pointer",
 							}}
-							InputProps={{
-								readOnly: isReadOnly,
-							}}
+							isAvailable={!isReadOnly}
 						/>
 
 						{errors.endTime && (
@@ -250,7 +245,10 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 					</div>
 				</div>
 
-				<ContentInput register={register("content")} />
+				<ContentInput
+					register={register("content")}
+					isAvailable={!isReadOnly}
+				/>
 
 				<Divider
 					style={{

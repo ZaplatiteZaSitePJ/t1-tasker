@@ -10,12 +10,14 @@ const Input: FC<InputProps> = ({
 	multiline,
 	sx,
 	subContent,
+	isAvailable,
 }) => {
 	return (
 		<FormControl>
 			<TextField
 				label={label}
 				variant={variant}
+				InputProps={{ readOnly: !isAvailable }}
 				fullWidth={!!fullWidth}
 				multiline={!!multiline}
 				sx={sx}

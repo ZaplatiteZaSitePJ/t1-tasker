@@ -54,7 +54,7 @@
 ## Инструкция к запуску через GitHub
 
 ```bash
-git clone https://github.com/ZaplatiteZaSitePJ/t1-tasker/tree/homework2
+git clone -b homework2 https://github.com/ZaplatiteZaSitePJ/t1-tasker.git
 
 cd tasker
 

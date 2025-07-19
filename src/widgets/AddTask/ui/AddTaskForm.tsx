@@ -4,8 +4,7 @@ import type { TaskProps } from "@shared/types/Task.interface";
 import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
 import type { Priorites } from "@shared/types/Priopites.type";
-import { addTask } from "@features/Tasks/api/localstorage";
-import { getAllTasks } from "@features/Tasks/api/localstorage";
+import { addTask } from "@features/Tasks/api/storeModel/tasks.slice";
 import TitleInput from "@features/Form/ui/inputs/TitleInput";
 import { titleOption } from "@features/Form/ui/options/Title.options";
 import DescriptionInput from "@features/Form/ui/inputs/DescriptionInput";
@@ -18,12 +17,11 @@ import EndTimeInput from "@features/Form/ui/inputs/EndTimeInput";
 import PrioritiesSelect from "@features/Form/ui/selects/PrioritiesSelect";
 import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
 import ContentInput from "@features/Form/ui/inputs/ContentInput";
-import { getDate } from "@features/lib/getDate";
 import type { FC } from "react";
 import type { ModalProps } from "@shared/ui/modals/type/Modals.type";
+import { useDispatch } from "react-redux";
 
-const AddTaskForm:FC<ModalProps> = ({onClose}) => {
-
+const AddTaskForm: FC<ModalProps> = ({ onClose }) => {
 	const {
 		register,
 		getValues,
@@ -59,18 +57,13 @@ const AddTaskForm:FC<ModalProps> = ({onClose}) => {
 		}
 	};
 
-	const onSubmit = () => {
-		const newTask = {
-			...getValues(),
-			id: String(Math.floor(Math.random() * (10 - 5000 + 1)) + 10),
-			createdAt: getDate(),
-		};
+	const dispatch = useDispatch();
 
-		addTask(newTask);
-		const updatedTasks = getAllTasks();
-		addTask(updatedTasks);
+	const onSubmit = () => {
+		const newTask = getValues();
+		dispatch(addTask(newTask));
 		reset();
-		{onClose && onClose()}
+		onClose?.();
 	};
 
 	return (
@@ -186,6 +179,6 @@ const AddTaskForm:FC<ModalProps> = ({onClose}) => {
 			</form>
 		</div>
 	);
-}
+};
 
-export default AddTaskForm
+export default AddTaskForm;

@@ -6,11 +6,9 @@ import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
 import type { Priorites } from "@shared/types/Priopites.type";
 import { timeValidation } from "@features/lib";
-import { getAllTasks } from "@features/Tasks/api/localstorage";
 import type { FC } from "react";
 import type { TaskDetaileFormProps } from "./TaskDetailesForm.type";
 import { useNavigate, useParams } from "react-router-dom";
-import { getTask } from "@features/Tasks/api/localstorage";
 import { titleOption } from "@features/Form/ui/options/Title.options";
 import TitleInput from "@features/Form/ui/inputs/TitleInput";
 import DescriptionInput from "@features/Form/ui/inputs/DescriptionInput";
@@ -23,7 +21,12 @@ import StatusSelect from "@features/Form/ui/selects/StatusSelect";
 import PrioritiesSelect from "@features/Form/ui/selects/PrioritiesSelect";
 import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
 import ContentInput from "@features/Form/ui/inputs/ContentInput";
-import { deleteTask, updateTask } from "@features/Tasks/api/storeModel/tasks.slice";
+import {
+	deleteTask,
+	updateTask,
+} from "@features/Tasks/api/storeModel/tasks.slice";
+import { getTask } from "@features/Tasks/api/localstorage";
+import { useDispatch } from "react-redux";
 
 const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 	isReadOnly,
@@ -32,6 +35,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 	const navigate = useNavigate();
 
 	const { id } = useParams<{ id: string }>();
+	const dispatch = useDispatch();
 	const task = getTask(String(id));
 
 	const {
@@ -75,20 +79,18 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 
 	const onDelete = () => {
 		if (!isReadOnly) {
-			deleteTask(task.id);
+			dispatch(deleteTask(task.id));
 			navigate("/");
 		}
 	};
 
-	const onSubmit =  () => {
+	const onSubmit = () => {
 		if (!isReadOnly) {
 			const newTask = {
 				...getValues(),
 			};
 
-			updateTask(newTask);
-			const updatedTasks = getAllTasks();
-			updatedTasks(updatedTasks);
+			dispatch(updateTask(newTask));
 			navigate("/");
 		}
 	};

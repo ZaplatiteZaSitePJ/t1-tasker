@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./TaskDetailes.module.scss";
 import cn from "classnames";
-import TaskDetailesForm from "@widgets/TaskDetailes/ui/TaskDetailesForm";
+import TaskDetailesForm from "@widgets/TaskDetailesForm/ui/TaskDetailesForm";
 import { getTask } from "@features/Tasks/api/localstorage";
 import { useParams } from "react-router-dom";
 

@@ -1,5 +1,8 @@
 import type { TaskProps } from "@shared/types/Task.interface";
 
+/**
+ * Массив задач, используемый при первом запуске приложения.
+ */
 const tasks: TaskProps[] = [
 	{
 		id: "0",
@@ -127,6 +130,10 @@ const tasks: TaskProps[] = [
 	},
 ];
 
+/**
+ * Сохраняет предустановленные задачи в localStorage при первом посещении приложения.
+ * Устанавливает флаг `wasVisited`, чтобы избежать повторного заполнения при последующих заходах.
+ */
 export const fillTasksFirstTime = () => {
 	localStorage.setItem("wasVisited", "true");
 	localStorage.setItem("tasks", JSON.stringify(tasks));

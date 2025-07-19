@@ -7,6 +7,14 @@ type ButtonsParserProps = {
 	action: (value: string) => void;
 };
 
+/**
+ * Универсальный компонент для отображения набора кнопок для имимтации селекторов
+ * на основе переданного массива значений и шаблона отображения.
+ *
+ * `template`, чтобы отрисовать каждый элемент,
+ * `action` как обработчик клика.
+ */
+
 const ButtonsParser: FC<ButtonsParserProps> = ({
 	values,
 	template,

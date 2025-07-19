@@ -6,14 +6,11 @@ import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
 import type { Priorites } from "@shared/types/Priopites.type";
 import { timeValidation } from "@features/lib";
-import { useTasks } from "@app/context";
 import { getAllTasks } from "@features/Tasks/api/localstorage";
 import type { FC } from "react";
 import type { TaskDetaileFormProps } from "./TaskDetailesForm.type";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTask } from "@features/Tasks/api/localstorage";
-import { changeTask } from "@features/Tasks/api/localstorage";
-import { deleteTask } from "@features/Tasks/api/localstorage";
 import { titleOption } from "@features/Form/ui/options/Title.options";
 import TitleInput from "@features/Form/ui/inputs/TitleInput";
 import DescriptionInput from "@features/Form/ui/inputs/DescriptionInput";
@@ -26,12 +23,12 @@ import StatusSelect from "@features/Form/ui/selects/StatusSelect";
 import PrioritiesSelect from "@features/Form/ui/selects/PrioritiesSelect";
 import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
 import ContentInput from "@features/Form/ui/inputs/ContentInput";
+import { deleteTask, updateTask } from "@features/Tasks/api/storeModel/tasks.slice";
 
 const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 	isReadOnly,
 	setReadonly,
 }) => {
-	const { changeTasks } = useTasks();
 	const navigate = useNavigate();
 
 	const { id } = useParams<{ id: string }>();
@@ -89,9 +86,9 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 				...getValues(),
 			};
 
-			changeTask(newTask);
+			updateTask(newTask);
 			const updatedTasks = getAllTasks();
-			changeTasks(updatedTasks);
+			updatedTasks(updatedTasks);
 			navigate("/");
 		}
 	};

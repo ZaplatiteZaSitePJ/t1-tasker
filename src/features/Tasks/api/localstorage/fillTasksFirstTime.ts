@@ -2,7 +2,7 @@ import type { TaskProps } from "@shared/types/Task.interface";
 
 const tasks: TaskProps[] = [
 	{
-		id: 0,
+		id: "0",
 		title: "Добавить поиск",
 		description: "Реализовать функционал поиска по задачам.",
 		category: "Feature",
@@ -14,7 +14,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 1,
+		id: "1",
 		title: "Обновить README",
 		description: "Добавить инструкции по запуску и структуре проекта.",
 		category: "Documentation",
@@ -26,7 +26,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 2,
+		id: "2",
 		title: "Исправить баг с логином",
 		description:
 			"При неверном пароле пользователь не получает сообщение об ошибке.",
@@ -39,7 +39,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 3,
+		id: "3",
 		title: "Рефакторинг хука useAuth",
 		description:
 			"Оптимизировать хук авторизации и убрать дублирование кода.",
@@ -52,7 +52,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 4,
+		id: "4",
 		title: "Написать тесты для API",
 		description:
 			"Покрыть API-тестами методы авторизации и получения задач.",
@@ -65,7 +65,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 5,
+		id: "5",
 		title: "Добавить фильтрацию",
 		description:
 			"Позволить пользователям фильтровать задачи по статусу и приоритету.",
@@ -78,7 +78,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 6,
+		id: "6",
 		title: "Документация API",
 		description: "Описать эндпоинты API с примерами запросов и ответов.",
 		category: "Documentation",
@@ -90,7 +90,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 7,
+		id: "7",
 		title: "Баг в отчете о задачах",
 		description: "Некорректное отображение завершенных задач в отчете.",
 		category: "Bug",
@@ -102,7 +102,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 8,
+		id: "8",
 		title: "Оптимизировать загрузку",
 		description: "Уменьшить время загрузки главной страницы приложения.",
 		category: "Refactor",
@@ -114,7 +114,7 @@ const tasks: TaskProps[] = [
 		createdAt: "19.07.2025",
 	},
 	{
-		id: 9,
+		id: "9",
 		title: "Тесты формы входа",
 		description: "Добавить юнит-тесты для формы авторизации пользователя.",
 		category: "Test",

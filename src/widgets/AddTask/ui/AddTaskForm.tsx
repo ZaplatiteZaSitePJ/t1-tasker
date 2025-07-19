@@ -5,7 +5,6 @@ import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
 import type { Priorites } from "@shared/types/Priopites.type";
 import { addTask } from "@features/Tasks/api/localstorage";
-import { useTasks } from "@app/context";
 import { getAllTasks } from "@features/Tasks/api/localstorage";
 import TitleInput from "@features/Form/ui/inputs/TitleInput";
 import { titleOption } from "@features/Form/ui/options/Title.options";
@@ -24,7 +23,6 @@ import type { FC } from "react";
 import type { ModalProps } from "@shared/ui/modals/type/Modals.type";
 
 const AddTaskForm:FC<ModalProps> = ({onClose}) => {
-	const { changeTasks } = useTasks();
 
 	const {
 		register,
@@ -64,13 +62,13 @@ const AddTaskForm:FC<ModalProps> = ({onClose}) => {
 	const onSubmit = () => {
 		const newTask = {
 			...getValues(),
-			id: Math.floor(Math.random() * (10 - 5000 + 1)) + 10,
+			id: String(Math.floor(Math.random() * (10 - 5000 + 1)) + 10),
 			createdAt: getDate(),
 		};
 
 		addTask(newTask);
 		const updatedTasks = getAllTasks();
-		changeTasks(updatedTasks);
+		addTask(updatedTasks);
 		reset();
 		{onClose && onClose()}
 	};

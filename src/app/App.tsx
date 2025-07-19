@@ -1,10 +1,13 @@
-import { TasksProvider } from "./context/TasksContext";
+
 import { AppRouter } from "@app/routing";
+import { Provider } from "react-redux";
+import { store } from './store/store'
+
 function App() {
 	return (
-		<TasksProvider>
+		<Provider store={store}>
 			<AppRouter />
-		</TasksProvider>
+		</Provider>
 	);
 }
 

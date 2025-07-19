@@ -3,7 +3,7 @@ import type { Priorites } from "@shared/types/Priopites.type";
 import type { Status } from "@shared/types//Status.type";
 
 export interface TaskProps {
-	id: number;
+	id: string;
 	title: string;
 	description?: string;
 	content?: string;

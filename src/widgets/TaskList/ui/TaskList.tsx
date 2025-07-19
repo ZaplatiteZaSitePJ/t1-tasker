@@ -1,10 +1,11 @@
+import type { AppState } from "@app/store/store";
 import styles from "./TaskList.module.scss";
 import { TaskItem } from "@entities/Task";
-import { useTasks } from "@app/context";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function TaskList() {
-	const { tasks } = useTasks();
+	const tasks = useSelector((state: AppState) => state.tasks);
 
 	if (!tasks) return;
 

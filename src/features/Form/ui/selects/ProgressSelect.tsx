@@ -33,6 +33,7 @@ const ProgressSelect: FC<PrioritiesProps> = ({
 				action={action}
 				template={(value, onClick) => (
 					<Button
+						key={value}
 						sx={{
 							cursor: isAvailable ? "pointer" : "not-allowed",
 							color: `var(--black-color)`,

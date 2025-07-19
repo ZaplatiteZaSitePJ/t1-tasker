@@ -25,6 +25,7 @@ const PrioritiesSelect: FC<PrioritiesProps> = ({
 				action={action}
 				template={(value, onClick) => (
 					<button
+					 	key={value}
 						aria-label={value}
 						type="button"
 						style={{

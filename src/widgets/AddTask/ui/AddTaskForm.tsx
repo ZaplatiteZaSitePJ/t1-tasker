@@ -20,8 +20,10 @@ import PrioritiesSelect from "@features/Form/ui/selects/PrioritiesSelect";
 import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
 import ContentInput from "@features/Form/ui/inputs/ContentInput";
 import { getDate } from "@features/lib/getDate";
+import type { FC } from "react";
+import type { ModalProps } from "@shared/ui/modals/type/Modals.type";
 
-export default function AddTaskForm() {
+const AddTaskForm:FC<ModalProps> = ({onClose}) => {
 	const { changeTasks } = useTasks();
 
 	const {
@@ -70,6 +72,7 @@ export default function AddTaskForm() {
 		const updatedTasks = getAllTasks();
 		changeTasks(updatedTasks);
 		reset();
+		{onClose && onClose()}
 	};
 
 	return (
@@ -186,3 +189,5 @@ export default function AddTaskForm() {
 		</div>
 	);
 }
+
+export default AddTaskForm

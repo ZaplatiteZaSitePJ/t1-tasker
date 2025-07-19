@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 interface ModalProps {
-	children: React.ReactNode;
+	children: React.ReactElement<{ onClose: () => void }>;
 	onClose: () => void;
 }
 
@@ -36,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
 					overflow: "auto",
 				}}
 			>
-				{children}
+				{React.cloneElement(children, {onClose})}
 			</div>
 		</div>,
 		modalRoot

@@ -83,7 +83,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 		}
 	};
 
-	const onSubmit = () => {
+	const onSubmit =  () => {
 		if (!isReadOnly) {
 			const newTask = {
 				...getValues(),
@@ -92,7 +92,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 			changeTask(newTask);
 			const updatedTasks = getAllTasks();
 			changeTasks(updatedTasks);
-			setReadonly();
+			navigate("/");
 		}
 	};
 

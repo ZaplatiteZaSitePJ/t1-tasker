@@ -11,7 +11,7 @@ export default function TaskList() {
 	return (
 		<div className={styles.taskContainer}>
 			{tasks.map((task) => (
-				<Link to={`/tasks/${task.id}`}>
+				<Link to={`/tasks/${task.id}`} className={styles.link}>
 					<TaskItem
 						key={task.id}
 						id={task.id}
@@ -23,6 +23,7 @@ export default function TaskList() {
 						category={task.category}
 						startTime={task.startTime}
 						endTime={task.endTime}
+						createdAt={task.createdAt}
 					/>
 				</Link>
 			))}

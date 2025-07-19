@@ -31,6 +31,10 @@
 }
 
 .cardContent {
+	@media (max-width: 425px) {
+		margin: 0 auto
+	}
+
 	&:hover {
 		.hovered {
 			display: flex;

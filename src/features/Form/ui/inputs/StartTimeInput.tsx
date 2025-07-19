@@ -6,7 +6,7 @@ const StartTimeInput: FC<InputProps> = ({
 	register,
 	sx,
 	subContent,
-	isAvailable,
+	isAvailable=true,
 }) => {
 	return (
 		<Input

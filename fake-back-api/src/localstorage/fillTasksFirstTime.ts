@@ -1,4 +1,4 @@
-import type { TaskProps } from "@shared/types/Task.interface";
+import type { TaskProps } from "../type/Task.interface";
 
 /**
  * Массив задач, используемый при первом запуске приложения.

@@ -1,4 +1,4 @@
-import type { TaskProps } from "@shared/types/Task.interface";
+import { TaskProps } from "../type/Task.interface";
 import { getAllTasks } from "./getAllTasks";
 
 /**
@@ -10,7 +10,7 @@ import { getAllTasks } from "./getAllTasks";
 export const getTask = (id: string) => {
 	const taskId = id;
 	const allTasks = getAllTasks();
-	const task: TaskProps = allTasks.find(
+	const task = allTasks.find(
 		(currentTask: TaskProps) => currentTask.id === taskId
 	);
 	return task;

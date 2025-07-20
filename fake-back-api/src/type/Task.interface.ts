@@ -1,6 +1,6 @@
-import type { Category } from "@shared/types/Category.type";
-import type { Priorites } from "@shared/types/Priopites.type";
-import type { Status } from "@shared/types//Status.type";
+import type { Category } from "./Category.type";
+import type { Priorites } from "./Priopites.type";
+import type { Status } from "./Status.type";
 
 export interface TaskProps {
 	id: string;

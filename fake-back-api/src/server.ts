@@ -2,32 +2,69 @@ import express, { Request, Response } from "express";
 import { getAllTasks } from "./localstorage";
 import { TaskProps } from "./type/Task.interface";
 
-
 const app = express();
 const PORT = 3000;
 
-const tasks: TaskProps[] = getAllTasks()
-
 app.use(express.json());
 
-app.get('/tasks', (req, res) => {
-    console.log(tasks)
-    res.json(tasks)
-})
+app.get("/tasks", (req, res) => {
+	const tasks: TaskProps[] = getAllTasks();
+	console.log(tasks);
+	res.json(tasks);
+});
 
-app.get('/tasks/task/:id', (req, res) => {
-    const id = req.params.id
-    const task = tasks.find((task: TaskProps) => task.id === id)
+app.get("/tasks/task/:id", (req, res) => {
+	const tasks: TaskProps[] = getAllTasks();
+	const id = req.params.id;
+	const task = tasks.find((task: TaskProps) => task.id === id);
 
-    if (!task) {
-      return res.status(404).json({ message: "Task not found" });
-    }
+	if (!task) {
+		return res.status(404).json({ message: "Task not found" });
+	}
 
-    res.json(task)
-})
+	res.json(task);
+});
 
+app.post("/tasks", (req: Request, res: Response) => {
+	const tasks: TaskProps[] = getAllTasks();
+	const { task } = req.body;
+	if (!task) return res.status(400).json({ message: "task is required" });
 
+	tasks.push(task);
+	localStorage.setItem("tasks", JSON.stringify(tasks));
+	res.status(201).json(task);
+});
+
+app.patch("/tasks/:id", (req: Request, res: Response) => {
+	const tasks: TaskProps[] = getAllTasks();
+	const id = req.params.id;
+	const changedFields = req.body;
+
+	let task = tasks.find((task) => task.id === id);
+	let taskIndex = tasks.findIndex((task) => task.id === id);
+
+	if (!task) return res.status(404).json({ message: "Task not found" });
+
+	task = { ...task, ...changedFields };
+
+	if (!task) return res.status(404).json({ message: "Task not setted" });
+
+	tasks[taskIndex] = task;
+
+	localStorage.setItem("tasks", JSON.stringify(tasks));
+
+	res.status(200).json(task);
+});
+
+app.delete("/tasks/:id", (req: Request, res: Response) => {
+	const tasks: TaskProps[] = getAllTasks();
+	const id = req.params.id;
+
+	const clearedTasks = tasks.filter((task) => task.id !== id);
+	localStorage.setItem("tasks", JSON.stringify(clearedTasks));
+	res.status(200).json(clearedTasks);
+});
 
 app.listen(PORT, () => {
-  console.log(` Server working on http://localhost:${PORT}...`);
+	console.log(` Server working on http://localhost:${PORT}...`);
 });

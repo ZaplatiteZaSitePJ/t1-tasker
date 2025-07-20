@@ -11,12 +11,8 @@ import { tasksLoader } from "@features/Tasks/api/fetch/tasksLoader";
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Layout />}>
-			<Route index element={<Main />} />
-			<Route
-				path="tasks/:id"
-				element={<TaskDetailes />}
-				loader={tasksLoader}
-			/>
+			<Route index element={<Main />} loader={tasksLoader} />
+			<Route path="tasks/:id" element={<TaskDetailes />} />
 			<Route
 				path="visualisation"
 				element={

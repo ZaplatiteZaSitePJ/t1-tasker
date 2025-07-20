@@ -1,0 +1,21 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	width: min-content;
+	text-align: justify;
+	transition: transform ease 0.2s;
+
+	@media (max-width: 425px) {
+		width: 100%;
+	}
+
+	&:hover {
+		transform: translateY(-0.5rem);
+	}
+
+	&__contentPanel {
+		border-radius: 0.5rem;
+		border: 0.3rem solid;
+	}
+}

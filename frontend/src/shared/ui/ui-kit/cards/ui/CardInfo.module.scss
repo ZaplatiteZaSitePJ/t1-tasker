@@ -1,0 +1,50 @@
+.title {
+	text-align: center;
+	font-size: var(--normal-font-size);
+	font-weight: bold;
+	white-space: nowrap;
+}
+
+.descriptionContainer {
+	max-height: 4rem;
+	overflow: hidden;
+}
+
+.description {
+	font-size: var(--small-font-size);
+	font-weight: normal;
+	margin-bottom: 0.5rem;
+}
+
+.additionalContainer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.hovered {
+	position: relative;
+	height: 0;
+	transform: scaleY(0);
+}
+
+.cardContent {
+	@media (max-width: 425px) {
+		margin: 0 auto
+	}
+
+	&:hover {
+		.hovered {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			height: 7rem;
+			transform: scaleY(1);
+			padding: 0 0 0.75rem;
+			transform-origin: top;
+			transition: all 0.2s ease 0.3s;
+		}
+	}
+}

@@ -1,14 +1,18 @@
 import express, { Request, Response } from "express";
+import cors from "cors";
 import { getAllTasks } from "./localstorage";
 import { TaskProps } from "./type/Task.interface";
+import fs from "fs";
 
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.get("/tasks", (req, res) => {
-	const tasks: TaskProps[] = getAllTasks();
+	const data = fs.readFileSync("src/tasks.json", "utf-8");
+	const tasks = JSON.parse(data);
 	console.log(tasks);
 	res.json(tasks);
 });

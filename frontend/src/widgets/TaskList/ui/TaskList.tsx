@@ -1,18 +1,37 @@
-import type { AppState } from "@app/store/store";
 import styles from "./TaskList.module.scss";
 import { TaskItem } from "@entities/Task";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchTasksTH } from "@features/Tasks/api/storeModel/tasks.thunk";
+import {
+	useAppDispatch,
+	useAppSelector,
+} from "@features/Tasks/api/storeModel/hooks";
 
 export default function TaskList() {
-	const tasks = useSelector((state: AppState) => state.tasks);
+	const dispatch = useAppDispatch();
+	const tasks = useAppSelector((state) => state.tasks.list);
+	const loading = useAppSelector((state) => state.tasks.loading);
 
-	if (!tasks) return;
+	useEffect(() => {
+		dispatch(fetchTasksTH());
+	}, [dispatch]);
+
+	if (loading)
+		return (
+			<div>
+				<p>Tasks loading...</p>
+			</div>
+		);
 
 	return (
 		<div className={styles.taskContainer}>
 			{tasks.map((task) => (
-				<Link to={`/tasks/${task.id}`} className={styles.link} key={task.id}>
+				<Link
+					to={`/tasks/${task.id}`}
+					className={styles.link}
+					key={task.id}
+				>
 					<TaskItem
 						id={task.id}
 						title={task.title}

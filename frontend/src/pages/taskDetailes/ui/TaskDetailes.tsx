@@ -2,15 +2,13 @@ import { useState } from "react";
 import styles from "./TaskDetailes.module.scss";
 import cn from "classnames";
 import TaskDetailesForm from "@widgets/TaskDetailesForm/ui/TaskDetailesForm";
-import { getTask } from "@features/Tasks/api/localstorage";
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 export default function TaskDetailes() {
 	const [isReadonly, setIsReadonly] = useState<boolean>(true);
 
-	const { id } = useParams<{ id: string }>();
-	const task = getTask(String(id));
-	const createdAt = task.createdAt;
+	const task = useLoaderData();
+	const createdAt = task?.createdAt;
 
 	const setReadonly = () => {
 		setIsReadonly(true);

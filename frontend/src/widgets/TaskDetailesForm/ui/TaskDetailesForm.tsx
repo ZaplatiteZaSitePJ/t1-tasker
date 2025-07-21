@@ -6,9 +6,9 @@ import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
 import type { Priorites } from "@shared/types/Priopites.type";
 import { timeValidation } from "@features/lib";
-import type { FC } from "react";
+import { useEffect, type FC } from "react";
 import type { TaskDetaileFormProps } from "./TaskDetailesForm.type";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { titleOption } from "@features/Form/ui/options/Title.options";
 import TitleInput from "@features/Form/ui/inputs/TitleInput";
 import DescriptionInput from "@features/Form/ui/inputs/DescriptionInput";
@@ -25,18 +25,13 @@ import {
 	deleteTask,
 	updateTask,
 } from "@features/Tasks/api/storeModel/tasks.slice";
-import { getTask } from "@features/Tasks/api/localstorage";
-import { useDispatch } from "react-redux";
-
+import { useAppDispatch } from "@features/Tasks/api/storeModel/hooks";
 const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 	isReadOnly,
 	setReadonly,
 }) => {
 	const navigate = useNavigate();
-
-	const { id } = useParams<{ id: string }>();
-	const dispatch = useDispatch();
-	const task = getTask(String(id));
+	const dispatch = useAppDispatch();
 
 	const {
 		register,
@@ -46,9 +41,15 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 		watch,
 		reset,
 		formState: { errors },
-	} = useForm<TaskProps>({
-		defaultValues: task,
-	});
+	} = useForm<TaskProps>();
+
+	const task = useLoaderData();
+
+	useEffect(() => {
+		if (task) {
+			reset(task);
+		}
+	}, [task, reset]);
 
 	const status = watch("status");
 	const category = watch("category");
@@ -183,7 +184,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 
 					<CategorySelect
 						value={category}
-						defaultValue={task.category}
+						defaultValue={task?.category}
 						sx={{
 							width: "10rem",
 							pointerEvents: isReadOnly ? "none" : "auto",
@@ -208,7 +209,7 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 							pointerEvents: isReadOnly ? "none" : "auto",
 						}}
 						value={status}
-						defaultValue={task.status}
+						defaultValue={task?.status}
 						register={{
 							...register("status", {
 								required: "Поле обязательно",

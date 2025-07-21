@@ -6,13 +6,17 @@ import {
 import Main from "@pages/main/ui/Main";
 import { Layout } from "@shared/ui/layouts";
 import TaskDetailes from "@pages/taskDetailes/ui/TaskDetailes";
-import { tasksLoader } from "@features/Tasks/api/fetch/tasksLoader";
+import { taskLoader } from "@features/Tasks/api/fetch/taskLoader";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path="/" element={<Layout />}>
-			<Route index element={<Main />} loader={tasksLoader} />
-			<Route path="tasks/:id" element={<TaskDetailes />} />
+			<Route index element={<Main />} />
+			<Route
+				path="tasks/:id"
+				element={<TaskDetailes />}
+				loader={taskLoader}
+			/>
 			<Route
 				path="visualisation"
 				element={

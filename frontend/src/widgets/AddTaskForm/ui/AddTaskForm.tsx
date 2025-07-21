@@ -4,7 +4,7 @@ import type { TaskProps } from "@shared/types/Task.interface";
 import { ButtonBordered } from "@shared/ui/ui-kit";
 import { ButtonFilled } from "@shared/ui/ui-kit";
 import type { Priorites } from "@shared/types/Priopites.type";
-import { addTask } from "@features/Tasks/api/storeModel/tasks.slice";
+import { addTaskTH } from "@features/Tasks/api/storeModel/tasks.thunk";
 import TitleInput from "@features/Form/ui/inputs/TitleInput";
 import { titleOption } from "@features/Form/ui/options/Title.options";
 import DescriptionInput from "@features/Form/ui/inputs/DescriptionInput";
@@ -19,7 +19,9 @@ import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
 import ContentInput from "@features/Form/ui/inputs/ContentInput";
 import type { FC } from "react";
 import type { ModalProps } from "@shared/ui/modals/type/Modals.type";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@features/Tasks/api/storeModel/hooks";
+import { nanoid } from "@reduxjs/toolkit";
+import { getDate } from "@features/lib/getDate";
 
 const AddTaskForm: FC<ModalProps> = ({ onClose }) => {
 	const {
@@ -57,13 +59,18 @@ const AddTaskForm: FC<ModalProps> = ({ onClose }) => {
 		}
 	};
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
-	const onSubmit = () => {
-		const newTask = getValues();
-		dispatch(addTask(newTask));
-		reset();
-		onClose?.();
+	const onSubmit = async () => {
+		const newTask = { ...getValues(), id: nanoid(), createdAt: getDate() };
+
+		try {
+			await dispatch(addTaskTH(newTask)).unwrap();
+			reset();
+			onClose?.();
+		} catch (error) {
+			console.error("Error task creating: ", error);
+		}
 	};
 
 	return (

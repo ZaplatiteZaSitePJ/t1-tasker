@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import { getAllTasks } from "./localstorage";
 import { TaskProps } from "./type/Task.interface";
 import fs from "fs";
 
@@ -18,7 +17,8 @@ app.get("/tasks", (req, res) => {
 });
 
 app.get("/tasks/task/:id", (req, res) => {
-	const tasks: TaskProps[] = getAllTasks();
+	const data = fs.readFileSync("src/tasks.json", "utf-8");
+	const tasks = JSON.parse(data);
 	const id = req.params.id;
 	const task = tasks.find((task: TaskProps) => task.id === id);
 
@@ -30,22 +30,24 @@ app.get("/tasks/task/:id", (req, res) => {
 });
 
 app.post("/tasks", (req: Request, res: Response) => {
-	const tasks: TaskProps[] = getAllTasks();
-	const { task } = req.body;
+	const data = fs.readFileSync("src/tasks.json", "utf-8");
+	const tasks = JSON.parse(data);
+	const  task  = req.body;
 	if (!task) return res.status(400).json({ message: "task is required" });
-
 	tasks.push(task);
-	localStorage.setItem("tasks", JSON.stringify(tasks));
+	fs.writeFileSync("src/tasks.json", JSON.stringify(tasks, null, 2), "utf-8");
+	
 	res.status(201).json(task);
 });
 
 app.patch("/tasks/:id", (req: Request, res: Response) => {
-	const tasks: TaskProps[] = getAllTasks();
+	const data = fs.readFileSync("src/tasks.json", "utf-8");
+	const tasks = JSON.parse(data);
 	const id = req.params.id;
 	const changedFields = req.body;
 
-	let task = tasks.find((task) => task.id === id);
-	let taskIndex = tasks.findIndex((task) => task.id === id);
+	let task = tasks.find((task: TaskProps) => task.id === id);
+	let taskIndex = tasks.findIndex((task:TaskProps) => task.id === id);
 
 	if (!task) return res.status(404).json({ message: "Task not found" });
 
@@ -61,10 +63,11 @@ app.patch("/tasks/:id", (req: Request, res: Response) => {
 });
 
 app.delete("/tasks/:id", (req: Request, res: Response) => {
-	const tasks: TaskProps[] = getAllTasks();
+	const data = fs.readFileSync("src/tasks.json", "utf-8");
+	const tasks = JSON.parse(data);
 	const id = req.params.id;
 
-	const clearedTasks = tasks.filter((task) => task.id !== id);
+	const clearedTasks = tasks.filter((task: TaskProps) => task.id !== id);
 	localStorage.setItem("tasks", JSON.stringify(clearedTasks));
 	res.status(200).json(clearedTasks);
 });

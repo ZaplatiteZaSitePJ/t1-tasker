@@ -3,14 +3,9 @@ import styles from "./Main.module.scss";
 import TaskList from "@widgets/TaskList/ui/TaskList";
 import AddTaskForm from "@widgets/AddTaskForm/ui/AddTaskForm";
 import Modal from "@shared/ui/modals/ui/Modals";
-import { useLoaderData } from "react-router-dom";
 
 const Main: FC = () => {
 	const [showModal, setShowModal] = useState<boolean>(false);
-
-	const tasks = useLoaderData();
-
-	console.log(tasks);
 
 	const handleOpen = () => setShowModal(true);
 	const handleClose = () => setShowModal(false);

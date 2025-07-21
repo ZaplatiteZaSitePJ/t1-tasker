@@ -1,6 +1,6 @@
 # Приложения "Менеджер задач" на React + TypeScript
 
-(Домашнее задание 2)
+(Домашнее задание 3)
 
 ## Описание кейса:
 
@@ -11,8 +11,9 @@
 
 -   ### Обновленное
 
--   Полное изменение архитектуры кода к FSD
--   Добавление Redux Toolkit
+-   Добавленно fake api на Express
+-   REST-like взаимодействие
+-   Redux Toolkit работа с thunk
 
 -   ### Основная страница
 
@@ -28,14 +29,15 @@
 
 ## Особенности проекта:
 
--   Сохранение задач между сессиями (благодаря Local Storage)
+-   Сохранение задач между сессиями благодаря .json-файлу
 -   Упор на высокую отзывчивость компонентов и UI/UX
 -   Адаптив под различные устройства
 
 ## Использованные подходы:
 
 -   FSD
--   Использование Redux Toolkit и localStorage для работы с глобальными состояниями
+-   Использование Redux Toolkit для работы с глобальными состояниями
+-   Хранение данных с помощью Express и json
 -   Стилизация с помощью module.scss и Material UI
 -   Использование react-hook-forms для форм
 
@@ -44,20 +46,24 @@
 -   ### Основной
     -   HTML / CSS / SCSS
     -   React / TS
+    -   Nodejs / Express
 -   #### Дополнительный
-    -   Local Storage
     -   Vite
     -   React Router
+    -   Redux Toolkit
     -   React Hook Form
     -   Material UI
 
 ## Инструкция к запуску через GitHub
 
 ```bash
-git clone -b homework2 https://github.com/ZaplatiteZaSitePJ/t1-tasker.git
+git clone -b homework3 https://github.com/ZaplatiteZaSitePJ/t1-tasker.git
 
-cd tasker
+cd fake-back-api
+npm install
+npm run dev
 
+cd ../frontend
 npm install
 npm run build
 ```
@@ -65,6 +71,16 @@ npm run build
 ## Структура проекта
 
 ```
+fake-back-api
+
+src/
+├── type/                       # Основные типы
+├── server.ts                   # Сервер с описанными CRUD методами
+└── task.json                   # Файл для хранения данных
+
+
+frontend
+
 src/
 ├── app/                        # Точка входа приложения
 │   ├── routing/                # React Router (AppRouter)
@@ -82,10 +98,12 @@ src/
 │   │
 │   └── Tasks/                          # Логика, связанная с Задачами
 │        └── api/                       # Логика хранения и получения задач
-│              └── LocalStorage/           # Связанная с localStoarage
+│              └── fetch/               # fetch запросы
 │              │
 │              └── storeModel/             # Связанная с Redux
 │                   └── tasks.slice.ts
+│                   └── tasks.thunk.ts
+|                   └── hooks.ts
 │
 ├── pages/                      # Страницы приложения
 │   ├── main/

@@ -59,7 +59,7 @@ app.patch("/tasks/:id", (req: Request, res: Response) => {
 
 	tasks[taskIndex] = task;
 
-	localStorage.setItem("tasks", JSON.stringify(tasks));
+	fs.writeFileSync("src/tasks.json", JSON.stringify(tasks, null, 2), "utf-8");
 
 	res.status(200).json(task);
 });
@@ -70,7 +70,11 @@ app.delete("/tasks/:id", (req: Request, res: Response) => {
 	const id = req.params.id;
 
 	const clearedTasks = tasks.filter((task: TaskProps) => task.id !== id);
-	localStorage.setItem("tasks", JSON.stringify(clearedTasks));
+	fs.writeFileSync(
+		"src/tasks.json",
+		JSON.stringify(clearedTasks, null, 2),
+		"utf-8"
+	);
 	res.status(200).json(clearedTasks);
 });
 

@@ -12,18 +12,6 @@
     "createdAt": "19.07.2025"
   },
   {
-    "id": "1",
-    "title": "Обновить README",
-    "description": "Добавить инструкции по запуску и структуре проекта.",
-    "category": "Documentation",
-    "status": "Done",
-    "priorites": "Low",
-    "startTime": "12:30",
-    "endTime": "15:30",
-    "progress": 100,
-    "createdAt": "19.07.2025"
-  },
-  {
     "id": "2",
     "title": "Исправить баг с логином",
     "description": "При неверном пароле пользователь не получает сообщение об ошибке.",
@@ -97,7 +85,7 @@
   },
   {
     "id": "8",
-    "title": "Оптимизировать загрузку",
+    "title": "Оптимизировать КАЛ",
     "description": "Уменьшить время загрузки главной страницы приложения.",
     "category": "Refactor",
     "status": "In Progress",
@@ -105,31 +93,7 @@
     "startTime": "12:30",
     "endTime": "15:30",
     "progress": 25,
-    "createdAt": "19.07.2025"
-  },
-  {
-    "id": "9",
-    "title": "Тесты формы входа",
-    "description": "Добавить юнит-тесты для формы авторизации пользователя.",
-    "category": "Test",
-    "status": "Done",
-    "priorites": "Low",
-    "startTime": "12:30",
-    "endTime": "15:30",
-    "progress": 50,
-    "createdAt": "19.07.2025"
-  },
-  {
-    "priorites": "Low",
-    "progress": 75,
-    "status": "To-do",
-    "category": "Bug",
-    "title": "Новинка",
-    "description": "",
-    "startTime": "",
-    "endTime": "",
-    "content": "",
-    "id": "LlU_M2YXU5Y1X-ixQQrMp",
-    "createdAt": "21.07.2025"
+    "createdAt": "19.07.2025",
+    "content": ""
   }
 ]

@@ -21,11 +21,11 @@ import StatusSelect from "@features/Form/ui/selects/StatusSelect";
 import PrioritiesSelect from "@features/Form/ui/selects/PrioritiesSelect";
 import ProgressSelect from "@features/Form/ui/selects/ProgressSelect";
 import ContentInput from "@features/Form/ui/inputs/ContentInput";
-import {
-	deleteTask,
-	updateTask,
-} from "@features/Tasks/api/storeModel/tasks.slice";
 import { useAppDispatch } from "@features/Tasks/api/storeModel/hooks";
+import {
+	deleteTaskTH,
+	updateTaskTH,
+} from "@features/Tasks/api/storeModel/tasks.thunk";
 const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 	isReadOnly,
 	setReadonly,
@@ -78,21 +78,29 @@ const TaskDetailesForm: FC<TaskDetaileFormProps> = ({
 		}
 	};
 
-	const onDelete = () => {
+	const onDelete = async () => {
 		if (!isReadOnly) {
-			dispatch(deleteTask(task.id));
-			navigate("/");
+			try {
+				await dispatch(deleteTaskTH(task.id));
+				navigate("/");
+			} catch (error) {
+				console.error("Error update task: ", error);
+			}
 		}
 	};
 
-	const onSubmit = () => {
+	const onSubmit = async () => {
 		if (!isReadOnly) {
 			const newTask = {
 				...getValues(),
 			};
 
-			dispatch(updateTask(newTask));
-			navigate("/");
+			try {
+				await dispatch(updateTaskTH(newTask));
+				navigate("/");
+			} catch (error) {
+				console.error("Error update task: ", error);
+			}
 		}
 	};
 

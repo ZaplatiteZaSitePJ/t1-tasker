@@ -67,8 +67,7 @@ npm run dev
 #second terminal
 cd t1-tasker/frontend
 npm install
-npm run build 
-#or "npm run dev" 
+npm run dev 
 ```
 
 ## Структура проекта

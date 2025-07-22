@@ -22,6 +22,7 @@ import type { ModalProps } from "@shared/ui/modals/type/Modals.type";
 import { useAppDispatch } from "@features/Tasks/api/storeModel/hooks";
 import { nanoid } from "@reduxjs/toolkit";
 import { getDate } from "@features/lib/getDate";
+import { timeValidation } from "@features/lib";
 
 const AddTaskForm: FC<ModalProps> = ({ onClose }) => {
 	const {
@@ -151,7 +152,15 @@ const AddTaskForm: FC<ModalProps> = ({ onClose }) => {
 					<span> — </span>
 
 					<EndTimeInput
-						register={register("endTime", timeOptions)}
+						register={register("endTime", {
+							...timeOptions,
+							validate: (value) => {
+								return timeValidation(
+										getValues("startTime"),
+										value
+									);
+								},
+							})}
 						sx={{ width: "5rem" }}
 					/>
 					{errors.endTime && <div className={styles.errorDiv}></div>}

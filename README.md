@@ -59,13 +59,16 @@
 ```bash
 git clone -b homework3 https://github.com/ZaplatiteZaSitePJ/t1-tasker.git
 
-cd fake-back-api
+#first terminal
+cd t1-tasker/fake-back-api
 npm install
 npm run dev
 
-cd ../frontend
+#second terminal
+cd t1-tasker/frontend
 npm install
-npm run build
+npm run build 
+#or "npm run dev" 
 ```
 
 ## Структура проекта

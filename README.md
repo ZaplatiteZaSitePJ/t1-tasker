@@ -35,7 +35,6 @@ https://dailytasker-hn6440b2k-artemns-projects.vercel.app/ (деплой-вер�
     -   HTML / CSS / SCSS
     -   React / TS
 -   #### Дополнительный
-    -   Local Storage
     -   Vite
     -   React Router
     -   React Hook Form
